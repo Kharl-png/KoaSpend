@@ -6,6 +6,8 @@ import { mockSession } from './data/mockSession'
 import TopBar from './components/TopBar/TopBar'
 import OwnerOverview from './components/OwnerOverview/OwnerOverview'
 import { mockOwnerOverview } from './data/mockOwnerOverview'
+import OwnerRequests from './components/OwnerRequests/OwnerRequests'
+import { mockOwnerRequests } from './data/mockOwnerRequests'
 import './App.css'
 
 function getPageFromHash() {
@@ -60,6 +62,12 @@ function App() {
           <div className="container-fluid p-0">
             {page.id === 'overview' && mockSession.user.role === 'owner' ? (
               <OwnerOverview data={mockOwnerOverview} onNavigate={navigate} />
+            ) : page.id === 'requests' && mockSession.user.role === 'owner' ? (
+              <OwnerRequests
+                data={mockOwnerRequests}
+                user={mockSession.user}
+                searchQuery={searchQuery ?? ''}
+              />
             ) : (
               <>
                 <h1 className="h3 fw-semibold">{page.label}</h1>
