@@ -8,6 +8,7 @@ import { createMockReply } from './createMockReply'
 import './WorkspaceAssistant.css'
 
 interface WorkspaceAssistantProps {
+  initialDraft?: string
   data: WorkspaceAssistantData
   user: User
   onNavigate: (page: SidebarPage) => void
@@ -29,12 +30,13 @@ const quickActions = [
 ]
 
 export default function WorkspaceAssistant({
+  initialDraft = '',
   data,
   user,
   onNavigate,
 }: WorkspaceAssistantProps) {
   const [messages, setMessages] = useState(data.messages)
-  const [draft, setDraft] = useState('')
+  const [draft, setDraft] = useState(initialDraft)
   const messageSequence = useRef(0)
 
   function sendMessage(value: string) {
