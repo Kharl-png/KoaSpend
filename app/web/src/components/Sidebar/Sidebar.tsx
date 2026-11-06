@@ -131,7 +131,7 @@ export default function Sidebar({
           <a
             href="#overview"
             className="sidebar-brand d-flex align-items-center text-decoration-none"
-            aria-label="Allowance home"
+            aria-label="Koaspend home"
             onClick={() => {
               onNavigate('overview', 'Overview')
               setMobileOpen(false)
@@ -152,7 +152,7 @@ export default function Sidebar({
               />
             </svg>
             <span>
-              allowance<sup>®</sup>
+              KoaSpend
             </span>
           </a>
           <button
