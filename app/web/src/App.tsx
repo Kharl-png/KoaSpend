@@ -18,6 +18,8 @@ import SpendingPolicy from './components/SpendingPolicy/SpendingPolicy'
 import { mockSpendingPolicy } from './data/mockSpendingPolicy'
 import OwnerActivity from './components/OwnerActivity/OwnerActivity'
 import { mockActivity } from './data/mockActivity'
+import OwnerConnections from './components/OwnerConnections/OwnerConnections'
+import { mockConnections } from './data/mockConnections'
 import type { ActivityKind } from './types/activity'
 import type { OwnerProjectsData } from './types/projects'
 import type { OwnerTeamData } from './types/team'
@@ -32,6 +34,7 @@ function getPageFromHash() {
 }
 
 function App() {
+  const [connectionsData, setConnectionsData] = useState(mockConnections)
   const [activityEvents, setActivityEvents] = useState(mockActivity)
   const [policyData, setPolicyData] = useState(mockSpendingPolicy)
   const [teamData, setTeamData] = useState(mockOwnerTeam)
@@ -242,6 +245,13 @@ function App() {
                   ...mockOwnerRequests,
                   projects: projectsData.projects,
                 }}
+              />
+            ) : page.id === 'connections' &&
+              mockSession.user.role === 'owner' ? (
+              <OwnerConnections
+                data={connectionsData}
+                suppliers={policyData.suppliers}
+                onChange={setConnectionsData}
               />
             ) : page.id === 'assistant' ? (
               <WorkspaceAssistant

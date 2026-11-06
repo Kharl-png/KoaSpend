@@ -1,0 +1,148 @@
+.owner-connections {
+  --connections-bg: #0c223a;
+  --connections-fg: #edf4ff;
+  --connections-accent: #e2edff;
+  --connections-muted: color-mix(
+    in srgb,
+    var(--connections-bg) 65%,
+    var(--connections-fg)
+  );
+  --connections-border: color-mix(
+    in srgb,
+    var(--connections-bg) 18%,
+    var(--connections-fg)
+  );
+  color: var(--connections-bg);
+  font-size: 14px;
+}
+
+.connections-title {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+}
+
+.connections-muted {
+  color: var(--connections-muted);
+}
+
+.connection-service,
+.connection-setup,
+.connections-dialog {
+  border: 1px solid var(--connections-border);
+  background: var(--connections-fg);
+}
+
+.connection-badge,
+.connection-state,
+.connection-step-number {
+  background: var(--connections-accent);
+  color: var(--connections-bg);
+}
+
+.connection-badge {
+  font-weight: 500;
+}
+
+.connection-step-number {
+  width: 30px;
+  height: 30px;
+  font-weight: 600;
+}
+
+.connection-step + .connection-step {
+  border-top: 1px solid var(--connections-border);
+}
+
+.connection-step {
+  scroll-margin-top: 180px;
+}
+
+.connection-step-content {
+  min-width: 0;
+}
+
+.owner-connections .connections-primary,
+.owner-connections .connections-outline {
+  padding: 10px 16px;
+  border-radius: 26px;
+  font-size: 12px;
+}
+
+.owner-connections .connections-primary {
+  background: var(--connections-bg);
+  color: var(--connections-fg);
+}
+
+.owner-connections .connections-primary:hover {
+  background: color-mix(
+    in srgb,
+    var(--connections-bg) 80%,
+    var(--connections-accent)
+  );
+}
+
+.connections-outline {
+  border: 1px solid var(--connections-border);
+  color: var(--connections-bg);
+}
+
+.connections-outline:hover {
+  background: var(--connections-accent);
+  color: var(--connections-bg);
+}
+
+.connections-link {
+  font-size: 12px;
+  color: var(--connections-bg);
+}
+
+.connections-link:hover {
+  text-decoration: underline;
+  color: var(--connections-bg);
+}
+
+.owner-connections .form-control,
+.owner-connections .form-select,
+.owner-connections .form-check-input {
+  background-color: var(--connections-fg);
+  border-color: var(--connections-border);
+  color: var(--connections-bg);
+  font-size: 14px;
+}
+
+.owner-connections .form-check-input:checked {
+  background-color: var(--connections-bg);
+  border-color: var(--connections-bg);
+}
+
+.owner-connections button:focus-visible,
+.owner-connections a:focus-visible,
+.owner-connections summary:focus-visible,
+.owner-connections .form-control:focus,
+.owner-connections .form-select:focus,
+.owner-connections .form-check-input:focus {
+  outline: 2px solid var(--connections-muted);
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+.connections-dialog {
+  width: min(480px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  border-radius: 16px;
+  color: var(--connections-bg);
+}
+
+.connections-dialog::backdrop {
+  background: color-mix(in srgb, var(--connections-bg) 50%, transparent);
+}
+
+.connections-close {
+  color: var(--connections-bg);
+}
+
+.connections-error {
+  border-left: 3px solid var(--connections-bg);
+  padding-left: 10px;
+}
