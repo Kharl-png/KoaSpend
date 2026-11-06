@@ -32,7 +32,7 @@ const navigation = [
   },
   {
     id: 'assistant',
-    label: 'Spend assistant',
+    label: 'Workspace assistant',
     icon: MessageSquare,
   },
   {
@@ -54,11 +54,6 @@ const navigation = [
     id: 'activity',
     label: 'Activity',
     icon: Activity,
-  },
-  {
-    id: 'notes',
-    label: 'Saved notes',
-    icon: Sparkles,
   },
   {
     id: 'connections',
