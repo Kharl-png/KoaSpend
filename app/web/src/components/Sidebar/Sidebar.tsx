@@ -2,21 +2,19 @@ import { useState } from 'react'
 import { ChevronDown, Menu, X } from 'lucide-react'
 import { navigation } from './navigation'
 import type { SidebarPage } from './navigation'
-import type { User, Workspace } from '../../types/workspace'
+import type { User } from '../../types/workspace'
 import logo from '../../assets/logo.png'
 import './Sidebar.css'
 
 interface SidebarProps {
   activePage: SidebarPage
   onNavigate: (page: SidebarPage, label: string) => void
-  workspace: Workspace
   user: User
 }
 
 export default function Sidebar({
   activePage,
   onNavigate,
-  workspace,
   user,
 }: SidebarProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -82,18 +80,6 @@ export default function Sidebar({
           >
             <X size={20} />
           </button>
-        </div>
-
-        <div className="position-relative mb-3">
-          <div className="workspace-selector d-flex align-items-center text-start w-100">
-            <span className="workspace-avatar d-flex align-items-center justify-content-center flex-shrink-0">
-              {workspace.avatarLabel}
-            </span>
-            <span className="flex-grow-1">
-              <span className="d-block fw-semibold">{workspace.name}</span>
-            </span>
-            <ChevronDown size={17} className="flex-shrink-0" />
-          </div>
         </div>
 
         <p className="sidebar-section-label mb-2">Workspace</p>

@@ -8,7 +8,6 @@
   --topbar-muted: color-mix(in srgb, var(--topbar-bg) 65%, var(--topbar-fg));
   --topbar-border: color-mix(in srgb, var(--topbar-bg) 18%, var(--topbar-fg));
   --topbar-ring: color-mix(in srgb, var(--topbar-bg) 55%, var(--topbar-accent));
-  --topbar-status-bg: color-mix(in srgb, var(--topbar-fg) 80%, #b8d6c5);
   color: var(--topbar-bg);
 }
 
@@ -68,38 +67,10 @@
   font-weight: 400;
 }
 
-.workspace-status {
-  min-height: 42px;
-  padding: 10px 36px;
-  border-block: 1px solid var(--topbar-border);
-  background: var(--topbar-status-bg);
-  color: var(--topbar-bg);
-  font-size: 11px;
-}
-
-.connection-status {
-  color: var(--topbar-muted);
-  font-size: inherit;
-}
-
-.connection-status:hover {
-  color: var(--topbar-bg);
-  text-decoration: underline;
-}
-
-.connection-status:focus-visible {
-  outline: 2px solid var(--topbar-ring);
-  outline-offset: 4px;
-}
-
 @media (max-width: 991.98px) {
   .topbar {
     padding-left: 68px;
     padding-right: 20px;
-  }
-
-  .workspace-status {
-    padding-inline: 20px;
   }
 }
 

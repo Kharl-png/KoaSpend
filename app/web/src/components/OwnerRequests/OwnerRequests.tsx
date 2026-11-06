@@ -1,8 +1,6 @@
 import { useState } from 'react'
-import { FileText, Plus } from 'lucide-react'
+import { FileText } from 'lucide-react'
 import type { OwnerRequestsData, RequestStatus } from '../../types/requests'
-import type { User } from '../../types/workspace'
-import OwnerAccessDialog from './OwnerAccessDialog'
 import { filterRequests } from './filterRequests'
 import './OwnerRequests.css'
 
@@ -33,14 +31,12 @@ const statusLabels: Record<RequestStatus, string> = {
 
 interface OwnerRequestsProps {
   data: OwnerRequestsData
-  user: User
   searchQuery: string
   initialProjectId?: string
 }
 
 export default function OwnerRequests({
   data,
-  user,
   searchQuery,
   initialProjectId = 'all',
 }: OwnerRequestsProps) {
@@ -50,7 +46,6 @@ export default function OwnerRequests({
       ? initialProjectId
       : 'all',
   )
-  const [showAccess, setShowAccess] = useState(false)
   const needsReview = data.requests.filter(
     (request) => request.status === 'needs_review',
   ).length
@@ -69,14 +64,6 @@ export default function OwnerRequests({
             Review your team’s purchase requests.
           </p>
         </div>
-        <button
-          type="button"
-          className="btn requests-primary d-inline-flex align-items-center gap-2"
-          onClick={() => setShowAccess(true)}
-        >
-          <Plus size={18} aria-hidden="true" />
-          New request
-        </button>
       </div>
 
       <div className="requests-toolbar d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
@@ -166,9 +153,6 @@ export default function OwnerRequests({
       <p className="visually-hidden" role="status">
         {visibleRequests.length} matching requests
       </p>
-      {showAccess && (
-        <OwnerAccessDialog user={user} onClose={() => setShowAccess(false)} />
-      )}
     </div>
   )
 }

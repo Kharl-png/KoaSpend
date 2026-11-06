@@ -1,20 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowUpRight, ChevronRight, Search, X } from 'lucide-react'
-import type { Workspace } from '../../types/workspace'
+import { ChevronRight, Search, X } from 'lucide-react'
 import './TopBar.css'
 
 interface TopBarProps {
   pageTitle: string
-  workspace: Workspace
   onSearch: (query: string) => void
-  onConnectionStatus: () => void
 }
 
 export default function TopBar({
   pageTitle,
-  workspace,
   onSearch,
-  onConnectionStatus,
 }: TopBarProps) {
   const [query, setQuery] = useState('')
   const searchInput = useRef<HTMLInputElement>(null)
@@ -91,21 +86,6 @@ export default function TopBar({
         </div>
       </div>
 
-      <div className="workspace-status d-flex align-items-center justify-content-between flex-wrap gap-2">
-        <div className="d-flex align-items-center flex-wrap gap-3">
-          <span className="d-flex align-items-center gap-2 fw-medium text-nowrap">
-            {workspace.name}
-          </span>
-        </div>
-        <button
-          type="button"
-          className="btn connection-status d-flex align-items-center gap-2 text-nowrap p-0"
-          onClick={onConnectionStatus}
-        >
-          Connection status
-          <ArrowUpRight size={14} aria-hidden="true" />
-        </button>
-      </div>
     </header>
   )
 }

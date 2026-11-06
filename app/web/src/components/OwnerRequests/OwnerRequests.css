@@ -31,24 +31,6 @@
   color: var(--requests-muted);
 }
 
-.owner-requests .requests-primary {
-  border-radius: 30px;
-  background: var(--requests-bg);
-  color: var(--requests-fg);
-  padding: 12px 20px;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.owner-requests .requests-primary:hover {
-  background: color-mix(
-    in srgb,
-    var(--requests-bg) 80%,
-    var(--requests-accent)
-  );
-  color: var(--requests-fg);
-}
-
 .requests-toolbar .nav-link {
   padding: 10px 12px;
   color: var(--requests-muted);
@@ -116,27 +98,6 @@
   padding: 44px 12px;
   color: var(--requests-muted);
   border-bottom: 0;
-}
-
-.requests-access-dialog {
-  width: min(480px, calc(100% - 32px));
-  max-height: calc(100dvh - 32px);
-  border: 1px solid var(--requests-border);
-  border-radius: 16px;
-  background: var(--requests-fg);
-  color: var(--requests-bg);
-}
-
-.requests-access-dialog .modal-content {
-  background: transparent;
-}
-
-.requests-access-dialog::backdrop {
-  background: color-mix(in srgb, var(--requests-bg) 50%, transparent);
-}
-
-.requests-icon-button {
-  color: var(--requests-bg);
 }
 
 @media (max-width: 575.98px) {
