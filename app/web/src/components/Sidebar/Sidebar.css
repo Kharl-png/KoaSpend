@@ -1,0 +1,162 @@
+.workspace-sidebar {
+  --sidebar-bg: #082126;
+  --sidebar-muted: #afc9c5;
+  width: 224px;
+  height: 100dvh;
+  position: sticky;
+  top: 0;
+  flex-shrink: 0;
+  padding: 16px 18px 12px;
+  overflow-y: auto;
+  background: var(--sidebar-bg);
+  color: #e6f5f0;
+  scrollbar-width: thin;
+}
+.sidebar-brand-row {
+  margin: 0 8px 22px;
+}
+.sidebar-brand {
+  gap: 7px;
+  color: #e6f5f0;
+}
+.sidebar-brand:hover {
+  color: #fff;
+}
+.sidebar-brand svg {
+  color: #06ae78;
+}
+.sidebar-brand svg {
+  width: 29px;
+  height: 34px;
+}
+.workspace-sidebar > * {
+  flex-shrink: 0;
+}
+.sidebar-brand span {
+  font-size: 26px;
+  font-weight: 650;
+  letter-spacing: -1.5px;
+}
+.sidebar-brand sup {
+  font-size: 9px;
+  top: -1.8em;
+  margin-left: 3px;
+  letter-spacing: 0;
+}
+.workspace-selector {
+  padding: 12px 10px;
+  gap: 10px;
+  min-height: 80px;
+  background: #163338;
+  border: 1px solid #355054;
+  border-radius: 12px;
+  color: #ecf7f4;
+  font-size: 12px;
+}
+.workspace-selector small,
+.account-button small {
+  color: var(--sidebar-muted);
+  font-size: 12px;
+}
+.workspace-avatar {
+  width: 32px;
+  height: 34px;
+  border-radius: 8px;
+  background: #ddf2e9;
+  color: #164a43;
+  font-size: 18px;
+  font-weight: 600;
+}
+.sidebar-section-label {
+  padding-left: 13px;
+  font-size: 12px;
+  color: #91b8b6;
+}
+.workspace-sidebar .nav-link {
+  min-height: 40px;
+  padding: 9px 13px;
+  border-radius: 9px;
+  color: var(--sidebar-muted);
+  font-size: 14px;
+}
+.workspace-sidebar .nav-link:hover {
+  background: #17383c;
+  color: #fff;
+}
+.workspace-sidebar .nav-link.active {
+  background: #e4f5ed;
+  color: #123f39;
+  font-weight: 600;
+}
+.workspace-sidebar .nav-link:focus-visible,
+.workspace-sidebar button:focus-visible,
+.sidebar-brand:focus-visible {
+  outline: 2px solid #5bdbad;
+  outline-offset: 3px;
+  box-shadow: none;
+}
+.workspace-sidebar .sidebar-secondary-start {
+  margin-top: 12px;
+}
+.workspace-sidebar nav {
+  margin-bottom: 14px;
+}
+.sidebar-account {
+  border-top: 1px solid #345055;
+}
+.account-button {
+  color: #e6f5f0;
+  padding: 4px 6px;
+}
+.account-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #daeee5;
+  color: #174940;
+  font-size: 12px;
+}
+.account-name {
+  font-size: 12px;
+  line-height: 1.4;
+}
+.sidebar-toggle {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  background: #082126;
+  color: #e6f5f0;
+  z-index: 1020;
+}
+.sidebar-toggle:hover {
+  background: #163338;
+  color: #fff;
+}
+.sidebar-close {
+  color: #e6f5f0;
+}
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: #001a2280;
+  border: 0;
+  z-index: 1030;
+}
+@media (max-width: 991.98px) {
+  .workspace-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1040;
+    transform: translateX(-100%);
+    transition: transform 180ms ease;
+  }
+  .workspace-sidebar.is-open {
+    transform: translateX(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .workspace-sidebar {
+    transition: none;
+  }
+}
