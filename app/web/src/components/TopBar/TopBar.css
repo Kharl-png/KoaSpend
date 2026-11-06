@@ -1,0 +1,143 @@
+.workspace-header {
+  position: sticky;
+  top: 0;
+  z-index: 1010;
+  --topbar-bg: #0c223a;
+  --topbar-fg: #edf4ff;
+  --topbar-accent: #e2edff;
+  --topbar-muted: color-mix(in srgb, var(--topbar-bg) 65%, var(--topbar-fg));
+  --topbar-border: color-mix(in srgb, var(--topbar-bg) 18%, var(--topbar-fg));
+  --topbar-ring: color-mix(in srgb, var(--topbar-bg) 55%, var(--topbar-accent));
+  --topbar-status-bg: color-mix(in srgb, var(--topbar-fg) 80%, #b8d6c5);
+  color: var(--topbar-bg);
+}
+
+.topbar {
+  min-height: 80px;
+  padding: 20px 36px;
+  background: var(--topbar-fg);
+  font-size: 13px;
+}
+
+.topbar-muted {
+  color: var(--topbar-muted);
+}
+
+.topbar-search {
+  color: var(--topbar-muted);
+  border-radius: 6px;
+}
+
+.topbar-search-field {
+  border-radius: 6px;
+}
+
+.topbar-search-field:focus-within {
+  outline: 2px solid var(--topbar-ring);
+  outline-offset: 5px;
+}
+
+.topbar-search .form-control:focus {
+  outline: none;
+}
+
+.topbar-search .form-control {
+  width: clamp(180px, 22vw, 340px);
+  padding: 4px 6px;
+  background: transparent;
+  color: var(--topbar-bg);
+  font-size: 12px;
+}
+
+.topbar-search .form-control::placeholder {
+  color: var(--topbar-muted);
+}
+
+.topbar-search .form-control::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.topbar-shortcut {
+  padding: 3px 6px;
+  border: 1px solid var(--topbar-border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--topbar-muted);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.workspace-status {
+  min-height: 42px;
+  padding: 10px 36px;
+  border-block: 1px solid var(--topbar-border);
+  background: var(--topbar-status-bg);
+  color: var(--topbar-bg);
+  font-size: 11px;
+}
+
+.connection-status {
+  color: var(--topbar-muted);
+  font-size: inherit;
+}
+
+.connection-status:hover {
+  color: var(--topbar-bg);
+  text-decoration: underline;
+}
+
+.connection-status:focus-visible {
+  outline: 2px solid var(--topbar-ring);
+  outline-offset: 4px;
+}
+
+@media (max-width: 991.98px) {
+  .topbar {
+    padding-left: 68px;
+    padding-right: 20px;
+  }
+
+  .workspace-status {
+    padding-inline: 20px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .topbar {
+    padding: 16px 20px 20px;
+  }
+
+  .topbar > nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 36px;
+    padding-left: 48px;
+  }
+
+  .topbar-tools {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .topbar-search {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .topbar-search .form-control {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .topbar-search-field {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .topbar-shortcut {
+    display: none;
+  }
+}

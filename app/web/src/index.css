@@ -1,0 +1,18 @@
+:root {
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
+  color: #173b36;
+  background: #f6f8f7;
+}
+body {
+  margin: 0;
+  font-family: inherit;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
