@@ -14,6 +14,8 @@ import OwnerProjects from './components/OwnerProjects/OwnerProjects'
 import { mockOwnerProjects } from './data/mockOwnerProjects'
 import OwnerTeam from './components/OwnerTeam/OwnerTeam'
 import { mockOwnerTeam } from './data/mockOwnerTeam'
+import SpendingPolicy from './components/SpendingPolicy/SpendingPolicy'
+import { mockSpendingPolicy } from './data/mockSpendingPolicy'
 import './App.css'
 
 function getPageFromHash() {
@@ -25,6 +27,7 @@ function getPageFromHash() {
 }
 
 function App() {
+  const [policyData, setPolicyData] = useState(mockSpendingPolicy)
   const [teamData, setTeamData] = useState(mockOwnerTeam)
   const [assistantDraft, setAssistantDraft] = useState('')
   const [projectsData, setProjectsData] = useState(mockOwnerProjects)
@@ -80,6 +83,8 @@ function App() {
                 data={{
                   ...mockOwnerOverview,
                   projects: projectsData.projects,
+                  policyVersion: policyData.version,
+                  policyActive: !policyData.paused,
                 }}
                 onNavigate={navigate}
               />
@@ -129,6 +134,8 @@ function App() {
                   navigate('assistant')
                 }}
               />
+            ) : page.id === 'policy' && mockSession.user.role === 'owner' ? (
+              <SpendingPolicy data={policyData} onSave={setPolicyData} />
             ) : page.id === 'assistant' ? (
               <WorkspaceAssistant
                 data={mockWorkspaceAssistant}
