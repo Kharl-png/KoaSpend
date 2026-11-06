@@ -1,20 +1,27 @@
 .workspace-header {
-  color: #082126;
+  --topbar-bg: #0c223a;
+  --topbar-fg: #edf4ff;
+  --topbar-accent: #e2edff;
+  --topbar-muted: color-mix(in srgb, var(--topbar-bg) 65%, var(--topbar-fg));
+  --topbar-border: color-mix(in srgb, var(--topbar-bg) 18%, var(--topbar-fg));
+  --topbar-ring: color-mix(in srgb, var(--topbar-bg) 55%, var(--topbar-accent));
+  --topbar-status-bg: color-mix(in srgb, var(--topbar-fg) 80%, #b8d6c5);
+  color: var(--topbar-bg);
 }
 
 .topbar {
   min-height: 80px;
   padding: 20px 36px;
-  background: #fcfefd;
+  background: var(--topbar-fg);
   font-size: 13px;
 }
 
 .topbar-muted {
-  color: #7b918d;
+  color: var(--topbar-muted);
 }
 
 .topbar-search {
-  color: #859c92;
+  color: var(--topbar-muted);
   border-radius: 6px;
 }
 
@@ -23,7 +30,7 @@
 }
 
 .topbar-search-field:focus-within {
-  outline: 2px solid #90baa6;
+  outline: 2px solid var(--topbar-ring);
   outline-offset: 5px;
 }
 
@@ -35,12 +42,12 @@
   width: clamp(180px, 22vw, 340px);
   padding: 4px 6px;
   background: transparent;
-  color: #173b36;
+  color: var(--topbar-bg);
   font-size: 12px;
 }
 
 .topbar-search .form-control::placeholder {
-  color: #7b918d;
+  color: var(--topbar-muted);
 }
 
 .topbar-search .form-control::-webkit-search-cancel-button {
@@ -50,10 +57,10 @@
 
 .topbar-shortcut {
   padding: 3px 6px;
-  border: 1px solid #dce7e1;
+  border: 1px solid var(--topbar-border);
   border-radius: 4px;
   background: transparent;
-  color: #82958e;
+  color: var(--topbar-muted);
   font-size: 11px;
   font-weight: 400;
 }
@@ -61,31 +68,24 @@
 .workspace-status {
   min-height: 42px;
   padding: 10px 36px;
-  border-block: 1px solid #d9e7de;
-  background: #eaf4ef;
-  color: #477368;
+  border-block: 1px solid var(--topbar-border);
+  background: var(--topbar-status-bg);
+  color: var(--topbar-bg);
   font-size: 11px;
 }
 
-.workspace-status-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #09af72;
-}
-
 .connection-status {
-  color: #477368;
+  color: var(--topbar-muted);
   font-size: inherit;
 }
 
 .connection-status:hover {
-  color: #082126;
+  color: var(--topbar-bg);
   text-decoration: underline;
 }
 
 .connection-status:focus-visible {
-  outline: 2px solid #477368;
+  outline: 2px solid var(--topbar-ring);
   outline-offset: 4px;
 }
 
