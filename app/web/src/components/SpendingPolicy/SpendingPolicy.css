@@ -1,0 +1,154 @@
+.spending-policy {
+  --policy-bg: #0c223a;
+  --policy-fg: #edf4ff;
+  --policy-accent: #e2edff;
+  --policy-muted: color-mix(in srgb, var(--policy-bg) 65%, var(--policy-fg));
+  --policy-border: color-mix(in srgb, var(--policy-bg) 18%, var(--policy-fg));
+  --policy-hover: color-mix(
+    in srgb,
+    var(--policy-bg) 12%,
+    var(--policy-accent)
+  );
+  color: var(--policy-bg);
+  font-size: 14px;
+}
+
+.policy-title {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+}
+
+.policy-muted {
+  color: var(--policy-muted);
+}
+
+.policy-panel,
+.policy-dialog {
+  background: var(--policy-fg);
+  border: 1px solid var(--policy-border);
+  color: var(--policy-bg);
+}
+
+.policy-version {
+  background: var(--policy-accent);
+  color: var(--policy-bg);
+  padding: 8px 12px;
+  font-weight: 500;
+}
+
+.policy-section + .policy-section {
+  border-top: 1px solid var(--policy-border);
+  margin-top: 32px;
+  padding-top: 32px;
+}
+
+.policy-section-controls {
+  min-width: 0;
+}
+
+.policy-category {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 14px;
+  border: 1px solid var(--policy-border);
+  border-radius: 7px;
+}
+
+.policy-category .form-check-input {
+  float: none;
+  margin: 0;
+}
+
+.policy-category .form-check-label {
+  cursor: pointer;
+}
+
+.policy-footer {
+  border-top: 1px solid var(--policy-border);
+  margin-top: 32px;
+}
+
+.policy-switch + .policy-switch {
+  border-top: 1px solid var(--policy-border);
+}
+
+.spending-policy .form-control,
+.spending-policy .form-select,
+.spending-policy .input-group-text,
+.spending-policy .form-check-input {
+  background-color: var(--policy-fg);
+  border-color: var(--policy-border);
+  color: var(--policy-bg);
+  font-size: 14px;
+}
+
+.spending-policy .form-check-input:checked {
+  background-color: var(--policy-bg);
+  border-color: var(--policy-bg);
+}
+
+.spending-policy .form-switch .form-check-input:not(:checked) {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%230c223a'/%3E%3C/svg%3E");
+}
+
+.spending-policy .policy-primary,
+.spending-policy .policy-outline {
+  border-radius: 28px;
+  padding: 11px 18px;
+  font-size: 13px;
+}
+
+.spending-policy .policy-primary {
+  background: var(--policy-bg);
+  color: var(--policy-fg);
+}
+
+.spending-policy .policy-primary:hover {
+  background: color-mix(in srgb, var(--policy-bg) 80%, var(--policy-accent));
+}
+
+.policy-outline {
+  border: 1px solid var(--policy-border);
+  color: var(--policy-bg);
+}
+
+.policy-outline:hover {
+  background: var(--policy-hover);
+  color: var(--policy-bg);
+}
+
+.spending-policy button:focus-visible,
+.spending-policy .form-control:focus,
+.spending-policy .form-select:focus,
+.spending-policy .form-check-input:focus {
+  outline: 2px solid var(--policy-muted);
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+.policy-supplier {
+  border-bottom: 1px solid var(--policy-border);
+  overflow-wrap: anywhere;
+}
+
+.policy-dialog {
+  width: min(500px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  border-radius: 16px;
+}
+
+.policy-dialog::backdrop {
+  background: color-mix(in srgb, var(--policy-bg) 50%, transparent);
+}
+
+.policy-close {
+  color: var(--policy-bg);
+}
+
+.policy-error {
+  border-left: 3px solid var(--policy-bg);
+  padding-left: 10px;
+}
