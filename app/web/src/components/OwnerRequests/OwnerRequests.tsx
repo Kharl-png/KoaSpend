@@ -35,15 +35,21 @@ interface OwnerRequestsProps {
   data: OwnerRequestsData
   user: User
   searchQuery: string
+  initialProjectId?: string
 }
 
 export default function OwnerRequests({
   data,
   user,
   searchQuery,
+  initialProjectId = 'all',
 }: OwnerRequestsProps) {
   const [status, setStatus] = useState<'all' | RequestStatus>('all')
-  const [projectId, setProjectId] = useState('all')
+  const [projectId, setProjectId] = useState(
+    data.projects.some((project) => project.id === initialProjectId)
+      ? initialProjectId
+      : 'all',
+  )
   const [showAccess, setShowAccess] = useState(false)
   const needsReview = data.requests.filter(
     (request) => request.status === 'needs_review',
@@ -54,7 +60,11 @@ export default function OwnerRequests({
     <div className="owner-requests">
       <div className="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4 mb-md-5">
         <div>
-          <h1 className="requests-title mb-2">Requests</h1>
+          <h1 className="requests-title mb-2">
+            {projectId === 'all'
+              ? 'Requests'
+              : `${data.projects.find((project) => project.id === projectId)?.name} requests`}
+          </h1>
           <p className="requests-muted mb-0">
             Review your team’s purchase requests.
           </p>
