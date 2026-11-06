@@ -1,20 +1,7 @@
 import { useState } from 'react'
-import {
-  Activity,
-  ChevronDown,
-  CircleHelp,
-  FileText,
-  Layers,
-  LayoutDashboard,
-  Menu,
-  MessageSquare,
-  Settings,
-  SlidersHorizontal,
-  Sparkles,
-  Users,
-  X,
-} from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { ChevronDown, Menu, X } from 'lucide-react'
+import { navigation } from './navigation'
+import type { SidebarPage } from './navigation'
 import type { User, Workspace } from '../../types/workspace'
 import logo from '../../assets/logo.png'
 import './Sidebar.css'
