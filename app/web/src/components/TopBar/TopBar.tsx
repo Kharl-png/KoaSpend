@@ -94,7 +94,6 @@ export default function TopBar({
       <div className="workspace-status d-flex align-items-center justify-content-between flex-wrap gap-2">
         <div className="d-flex align-items-center flex-wrap gap-3">
           <span className="d-flex align-items-center gap-2 fw-medium text-nowrap">
-            <span className="workspace-status-dot" aria-hidden="true" />
             {workspace.name}
           </span>
         </div>
