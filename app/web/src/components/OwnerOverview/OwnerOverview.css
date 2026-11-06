@@ -1,5 +1,13 @@
 .owner-overview {
-  color: #082126;
+  --overview-bg: #0c223a;
+  --overview-fg: #edf4ff;
+  --overview-accent: #e2edff;
+  --overview-muted: color-mix(in srgb, var(--overview-bg) 65%, var(--overview-fg));
+  --overview-border: color-mix(in srgb, var(--overview-bg) 18%, var(--overview-fg));
+  --overview-strong: color-mix(in srgb, var(--overview-bg) 75%, var(--overview-accent));
+  --overview-hover: color-mix(in srgb, var(--overview-bg) 12%, var(--overview-accent));
+  --overview-ring: color-mix(in srgb, var(--overview-bg) 55%, var(--overview-accent));
+  color: var(--overview-bg);
   font-size: 14px;
 }
 
@@ -10,12 +18,12 @@
 }
 
 .overview-muted {
-  color: #728e86;
+  color: var(--overview-muted);
 }
 
 .overview-panel {
-  background: #fff;
-  border: 1px solid #d9e6de;
+  background: var(--overview-fg);
+  border: 1px solid var(--overview-border);
   border-radius: 15px;
 }
 
@@ -28,36 +36,36 @@
 }
 
 .owner-overview .overview-button {
-  background: #082126;
-  color: #fff;
+  background: var(--overview-bg);
+  color: var(--overview-fg);
 }
 
 .owner-overview .overview-button:hover {
-  background: #20483f;
+  background: var(--overview-strong);
 }
 
 .owner-overview .overview-button-outline {
-  border: 1px solid #c8ded0;
-  color: #214f40;
+  border: 1px solid var(--overview-border);
+  color: var(--overview-bg);
 }
 
 .owner-overview .overview-button-outline:hover {
-  background: #eaf4ee;
+  background: var(--overview-accent);
 }
 
 .overview-link {
-  color: #376955;
+  color: var(--overview-strong);
   font-size: 12px;
   padding: 4px 0;
 }
 
 .overview-link:hover {
-  color: #082126;
+  color: var(--overview-bg);
   text-decoration: underline;
 }
 
 .owner-overview button:focus-visible {
-  outline: 2px solid #438d70;
+  outline: 2px solid var(--overview-ring);
   outline-offset: 4px;
 }
 
@@ -67,23 +75,23 @@
 
 .setup-progress {
   height: 4px;
-  background: #ccdfd2;
+  background: var(--overview-border);
 }
 
 .setup-progress .progress-bar {
-  background: #09aa72;
+  background: var(--overview-strong);
 }
 
 .setup-step + .setup-step {
-  border-top: 1px solid #dce8e0;
+  border-top: 1px solid var(--overview-border);
 }
 
 .setup-icon {
-  color: #80978c;
+  color: var(--overview-muted);
 }
 
 .setup-icon.is-complete {
-  color: #00ae79;
+  color: var(--overview-strong);
 }
 
 .setup-status {
@@ -91,15 +99,15 @@
 }
 
 .setup-status.badge {
-  background: #e4f3e9;
-  color: #286447;
+  background: var(--overview-accent);
+  color: var(--overview-strong);
 }
 
 .overview-project {
-  background: #e3f0e6;
-  border: 1px solid #d0e4d6;
+  background: var(--overview-accent);
+  border: 1px solid var(--overview-border);
   border-radius: 15px;
-  color: #244f3c;
+  color: var(--overview-bg);
 }
 
 .allocation-amount {
@@ -109,7 +117,7 @@
 
 .allocation-panel {
   min-height: 150px;
-  box-shadow: 0 3px 0 #e3ece5;
+  box-shadow: 0 3px 0 var(--overview-border);
 }
 
 .allocation-summary {
@@ -129,16 +137,16 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #83a18f;
+  background: var(--overview-muted);
 }
 
 .allocation-progress {
   height: 5px;
-  background: #deebe1;
+  background: var(--overview-border);
 }
 
 .allocation-progress .progress-bar {
-  background: #0bad75;
+  background: var(--overview-strong);
 }
 
 .allocation-progress .has-budget {
@@ -147,9 +155,9 @@
 
 .escrow-card {
   min-height: 102px;
-  border: 1px solid #d4e4db;
+  border: 1px solid var(--overview-border);
   border-radius: 13px;
-  background: #f7fbf8;
+  background: var(--overview-fg);
 }
 
 .overview-stat {
@@ -167,18 +175,18 @@
 .overview-stat-icon {
   width: 35px;
   height: 35px;
-  border: 1px solid #d6e6dc;
-  color: #628774;
+  border: 1px solid var(--overview-border);
+  color: var(--overview-muted);
 }
 
 @media (min-width: 768px) {
   .allocation-budget {
-    border-left: 1px solid #e0e9e3;
+    border-left: 1px solid var(--overview-border);
     padding-left: 28px;
   }
 
   .overview-stat + .overview-stat {
-    border-left: 1px solid #d8e5dd;
+    border-left: 1px solid var(--overview-border);
   }
 }
 
@@ -188,14 +196,14 @@
   }
 
   .overview-stat + .overview-stat {
-    border-top: 1px solid #d8e5dd;
+    border-top: 1px solid var(--overview-border);
   }
 }
 
 .overview-table {
-  --bs-table-color: #173e32;
+  --bs-table-color: var(--overview-bg);
   --bs-table-bg: transparent;
-  --bs-table-border-color: #e2ebe5;
+  --bs-table-border-color: var(--overview-border);
 }
 
 .overview-table th,
@@ -204,7 +212,7 @@
 }
 
 .overview-table th {
-  color: #728e86;
+  color: var(--overview-muted);
   font-size: 12px;
   font-weight: 500;
 }
@@ -214,12 +222,12 @@
 }
 
 .overview-project:hover {
-  background: #d8eadc;
-  border-color: #9cbfa9;
+  background: var(--overview-hover);
+  border-color: var(--overview-border);
 }
 
 .project-icon {
-  border: 1px solid #b9d5c2;
+  border: 1px solid var(--overview-border);
 }
 
 @media (max-width: 575.98px) {
