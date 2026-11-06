@@ -1,4 +1,7 @@
 .workspace-header {
+  position: sticky;
+  top: 0;
+  z-index: 1010;
   --topbar-bg: #0c223a;
   --topbar-fg: #edf4ff;
   --topbar-accent: #e2edff;
@@ -100,13 +103,27 @@
   }
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 767.98px) {
+  .topbar {
+    padding: 16px 20px 20px;
+  }
+
+  .topbar > nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 36px;
+    padding-left: 48px;
+  }
+
   .topbar-tools {
     width: 100%;
+    min-width: 0;
   }
 
   .topbar-search {
     flex: 1;
+    width: 100%;
     min-width: 0;
   }
 
