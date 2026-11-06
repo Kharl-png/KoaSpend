@@ -1,0 +1,71 @@
+.owner-activity {
+  --activity-bg: #0c223a;
+  --activity-fg: #edf4ff;
+  --activity-accent: #e2edff;
+  --activity-muted: color-mix(
+    in srgb,
+    var(--activity-bg) 65%,
+    var(--activity-fg)
+  );
+  --activity-border: color-mix(
+    in srgb,
+    var(--activity-bg) 18%,
+    var(--activity-fg)
+  );
+  color: var(--activity-bg);
+  font-size: 14px;
+}
+
+.activity-title {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+}
+
+.activity-muted {
+  color: var(--activity-muted);
+}
+
+.activity-export {
+  padding: 11px 18px;
+  border: 1px solid var(--activity-border);
+  border-radius: 28px;
+  color: var(--activity-bg);
+  font-size: 13px;
+}
+
+.activity-export:hover {
+  background: var(--activity-accent);
+  color: var(--activity-bg);
+}
+
+.activity-export:focus-visible {
+  outline: 2px solid var(--activity-muted);
+  outline-offset: 3px;
+}
+
+.activity-entry {
+  border-top: 1px solid var(--activity-border);
+}
+
+.activity-icon {
+  width: 34px;
+  height: 34px;
+  background: var(--activity-accent);
+  color: var(--activity-muted);
+}
+
+.activity-entry-body {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.activity-event-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.activity-time,
+.activity-actor {
+  font-size: 11px;
+}

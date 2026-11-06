@@ -7,6 +7,7 @@ import MemberAccessDialog from './MemberAccessDialog'
 import './OwnerTeam.css'
 
 interface OwnerTeamProps {
+  onAccessChange: (person: TeamPerson, action: 'code' | 'remove') => void
   data: OwnerTeamData
   tasks: ProjectTask[]
   onChange: (data: OwnerTeamData) => void
@@ -14,6 +15,7 @@ interface OwnerTeamProps {
 }
 
 export default function OwnerTeam({
+  onAccessChange,
   data,
   tasks,
   onChange,
@@ -286,6 +288,7 @@ export default function OwnerTeam({
           action={access.action}
           onClose={() => setAccess(null)}
           onConfirm={() => {
+            onAccessChange(access.person, access.action)
             onChange({
               ...data,
               people: data.people.map((person) =>
