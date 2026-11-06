@@ -12,6 +12,8 @@ import WorkspaceAssistant from './components/WorkspaceAssistant/WorkspaceAssista
 import { mockWorkspaceAssistant } from './data/mockWorkspaceAssistant'
 import OwnerProjects from './components/OwnerProjects/OwnerProjects'
 import { mockOwnerProjects } from './data/mockOwnerProjects'
+import OwnerTeam from './components/OwnerTeam/OwnerTeam'
+import { mockOwnerTeam } from './data/mockOwnerTeam'
 import './App.css'
 
 function getPageFromHash() {
@@ -23,6 +25,8 @@ function getPageFromHash() {
 }
 
 function App() {
+  const [teamData, setTeamData] = useState(mockOwnerTeam)
+  const [assistantDraft, setAssistantDraft] = useState('')
   const [projectsData, setProjectsData] = useState(mockOwnerProjects)
   const [routeHash, setRouteHash] = useState(window.location.hash)
   const requestProjectId =
@@ -92,7 +96,17 @@ function App() {
               />
             ) : page.id === 'projects' && mockSession.user.role === 'owner' ? (
               <OwnerProjects
-                data={projectsData}
+                data={{
+                  ...projectsData,
+                  members: teamData.people
+                    .filter(
+                      (person) => person.role === 'member' && person.active,
+                    )
+                    .map((person) => ({
+                      id: person.id,
+                      name: person.name,
+                    })),
+                }}
                 onChange={setProjectsData}
                 onViewRequests={(projectId) => {
                   setSearchQuery(null)
@@ -101,10 +115,25 @@ function App() {
                   setPage(getPageFromHash())
                 }}
               />
+            ) : page.id === 'team' && mockSession.user.role === 'owner' ? (
+              <OwnerTeam
+                data={teamData}
+                tasks={projectsData.tasks}
+                onChange={setTeamData}
+                onDraftProfile={(person) => {
+                  setAssistantDraft(
+                    person
+                      ? `Help improve ${person.name}'s responsibilities and purchasing guidance. Role: ${person.specialty}. Current responsibilities: ${person.responsibilities}`
+                      : 'Help me draft a team member profile, responsibilities, and spending guidance.',
+                  )
+                  navigate('assistant')
+                }}
+              />
             ) : page.id === 'assistant' ? (
               <WorkspaceAssistant
                 data={mockWorkspaceAssistant}
                 user={mockSession.user}
+                initialDraft={assistantDraft}
                 onNavigate={navigate}
               />
             ) : (
