@@ -16,6 +16,13 @@ import OwnerTeam from './components/OwnerTeam/OwnerTeam'
 import { mockOwnerTeam } from './data/mockOwnerTeam'
 import SpendingPolicy from './components/SpendingPolicy/SpendingPolicy'
 import { mockSpendingPolicy } from './data/mockSpendingPolicy'
+import OwnerActivity from './components/OwnerActivity/OwnerActivity'
+import { mockActivity } from './data/mockActivity'
+import OwnerConnections from './components/OwnerConnections/OwnerConnections'
+import { mockConnections } from './data/mockConnections'
+import type { ActivityKind } from './types/activity'
+import type { OwnerProjectsData } from './types/projects'
+import type { OwnerTeamData } from './types/team'
 import './App.css'
 
 function getPageFromHash() {
@@ -27,6 +34,8 @@ function getPageFromHash() {
 }
 
 function App() {
+  const [connectionsData, setConnectionsData] = useState(mockConnections)
+  const [activityEvents, setActivityEvents] = useState(mockActivity)
   const [policyData, setPolicyData] = useState(mockSpendingPolicy)
   const [teamData, setTeamData] = useState(mockOwnerTeam)
   const [assistantDraft, setAssistantDraft] = useState('')
@@ -54,6 +63,76 @@ function App() {
     window.location.hash = id
     setRouteHash(window.location.hash)
     setPage(navigation.find((item) => item.id === id) ?? navigation[0])
+  }
+
+  function recordActivity(
+    kind: ActivityKind,
+    title: string,
+    description: string,
+  ) {
+    const event = {
+      id: `event-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      kind,
+      title,
+      description,
+      actorName: mockSession.user.name,
+      occurredAt: new Date().toISOString(),
+    }
+    setActivityEvents((current) => [event, ...current])
+  }
+
+  function updateProjects(next: OwnerProjectsData) {
+    for (const project of next.projects) {
+      if (!projectsData.projects.some((item) => item.id === project.id)) {
+        recordActivity(
+          'project',
+          'Project created',
+          `${project.name} received an allowance of ${project.budget} ${next.currency}.`,
+        )
+      }
+    }
+    for (const task of next.tasks) {
+      if (!projectsData.tasks.some((item) => item.id === task.id)) {
+        const member = teamData.people.find(
+          (person) => person.id === task.memberId,
+        )
+        recordActivity(
+          'task',
+          'Work assigned',
+          `${task.title} assigned to ${member?.name ?? 'a team member'}.`,
+        )
+      }
+    }
+    setProjectsData(next)
+  }
+
+  function updateTeam(next: OwnerTeamData) {
+    for (const person of next.people) {
+      const previous = teamData.people.find((item) => item.id === person.id)
+      if (!previous) {
+        recordActivity(
+          'member',
+          'Team member added',
+          `${person.name} joined the workspace as ${person.specialty}.`,
+        )
+      } else {
+        const profile = (item: typeof person) => ({
+          ...item,
+          active: false,
+          codeSet: false,
+        })
+        if (
+          JSON.stringify(profile(previous)) !== JSON.stringify(profile(person))
+        ) {
+          recordActivity(
+            'member',
+            'Team profile updated',
+            `${person.name}'s profile and spending guidance were updated.`,
+          )
+        }
+      }
+    }
+    setTeamData(next)
   }
 
   return (
@@ -112,7 +191,7 @@ function App() {
                       name: person.name,
                     })),
                 }}
-                onChange={setProjectsData}
+                onChange={updateProjects}
                 onViewRequests={(projectId) => {
                   setSearchQuery(null)
                   window.location.hash = `requests?project=${encodeURIComponent(projectId)}`
@@ -124,7 +203,20 @@ function App() {
               <OwnerTeam
                 data={teamData}
                 tasks={projectsData.tasks}
-                onChange={setTeamData}
+                onChange={updateTeam}
+                onAccessChange={(person, action) =>
+                  recordActivity(
+                    'access',
+                    action === 'remove'
+                      ? 'Member access removed'
+                      : person.codeSet
+                        ? 'Member code reset'
+                        : 'Member code issued',
+                    action === 'remove'
+                      ? `${person.name} was marked inactive in this session.`
+                      : `Demo access updated for ${person.name}.`,
+                  )
+                }
                 onDraftProfile={(person) => {
                   setAssistantDraft(
                     person
@@ -135,7 +227,32 @@ function App() {
                 }}
               />
             ) : page.id === 'policy' && mockSession.user.role === 'owner' ? (
-              <SpendingPolicy data={policyData} onSave={setPolicyData} />
+              <SpendingPolicy
+                data={policyData}
+                onSave={(policy) => {
+                  setPolicyData(policy)
+                  recordActivity(
+                    'policy',
+                    'Spending policy updated',
+                    `Version ${policy.version} saved. Spending is ${policy.paused ? 'paused' : 'active'}.`,
+                  )
+                }}
+              />
+            ) : page.id === 'activity' && mockSession.user.role === 'owner' ? (
+              <OwnerActivity
+                events={activityEvents}
+                requests={{
+                  ...mockOwnerRequests,
+                  projects: projectsData.projects,
+                }}
+              />
+            ) : page.id === 'connections' &&
+              mockSession.user.role === 'owner' ? (
+              <OwnerConnections
+                data={connectionsData}
+                suppliers={policyData.suppliers}
+                onChange={setConnectionsData}
+              />
             ) : page.id === 'assistant' ? (
               <WorkspaceAssistant
                 data={mockWorkspaceAssistant}
