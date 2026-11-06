@@ -1,0 +1,237 @@
+.owner-overview {
+  color: #082126;
+  font-size: 14px;
+}
+
+.overview-title {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+}
+
+.overview-muted {
+  color: #728e86;
+}
+
+.overview-panel {
+  background: #fff;
+  border: 1px solid #d9e6de;
+  border-radius: 15px;
+}
+
+.owner-overview .overview-button,
+.owner-overview .overview-button-outline {
+  padding: 12px 19px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.owner-overview .overview-button {
+  background: #082126;
+  color: #fff;
+}
+
+.owner-overview .overview-button:hover {
+  background: #20483f;
+}
+
+.owner-overview .overview-button-outline {
+  border: 1px solid #c8ded0;
+  color: #214f40;
+}
+
+.owner-overview .overview-button-outline:hover {
+  background: #eaf4ee;
+}
+
+.overview-link {
+  color: #376955;
+  font-size: 12px;
+  padding: 4px 0;
+}
+
+.overview-link:hover {
+  color: #082126;
+  text-decoration: underline;
+}
+
+.owner-overview button:focus-visible {
+  outline: 2px solid #438d70;
+  outline-offset: 4px;
+}
+
+.setup-group + .setup-group {
+  margin-top: 28px;
+}
+
+.setup-progress {
+  height: 4px;
+  background: #ccdfd2;
+}
+
+.setup-progress .progress-bar {
+  background: #09aa72;
+}
+
+.setup-step + .setup-step {
+  border-top: 1px solid #dce8e0;
+}
+
+.setup-icon {
+  color: #80978c;
+}
+
+.setup-icon.is-complete {
+  color: #00ae79;
+}
+
+.setup-status {
+  font-size: 12px;
+}
+
+.setup-status.badge {
+  background: #e4f3e9;
+  color: #286447;
+}
+
+.overview-project {
+  background: #e3f0e6;
+  border: 1px solid #d0e4d6;
+  border-radius: 15px;
+  color: #244f3c;
+}
+
+.allocation-amount {
+  font-size: 40px;
+  letter-spacing: -1px;
+}
+
+.allocation-panel {
+  min-height: 150px;
+  box-shadow: 0 3px 0 #e3ece5;
+}
+
+.allocation-summary {
+  min-width: 200px;
+}
+
+.allocation-amount span {
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+.allocation-caption {
+  font-size: 11px;
+}
+
+.allocation-workspace-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #83a18f;
+}
+
+.allocation-progress {
+  height: 5px;
+  background: #deebe1;
+}
+
+.allocation-progress .progress-bar {
+  background: #0bad75;
+}
+
+.allocation-progress .has-budget {
+  min-width: 2px;
+}
+
+.escrow-card {
+  min-height: 102px;
+  border: 1px solid #d4e4db;
+  border-radius: 13px;
+  background: #f7fbf8;
+}
+
+.overview-stat {
+  padding: 4px 16px;
+}
+
+.overview-stat:first-child {
+  padding-left: 0;
+}
+
+.overview-stat small {
+  font-size: 11px;
+}
+
+.overview-stat-icon {
+  width: 35px;
+  height: 35px;
+  border: 1px solid #d6e6dc;
+  color: #628774;
+}
+
+@media (min-width: 768px) {
+  .allocation-budget {
+    border-left: 1px solid #e0e9e3;
+    padding-left: 28px;
+  }
+
+  .overview-stat + .overview-stat {
+    border-left: 1px solid #d8e5dd;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .overview-stat {
+    padding: 12px 0;
+  }
+
+  .overview-stat + .overview-stat {
+    border-top: 1px solid #d8e5dd;
+  }
+}
+
+.overview-table {
+  --bs-table-color: #173e32;
+  --bs-table-bg: transparent;
+  --bs-table-border-color: #e2ebe5;
+}
+
+.overview-table th,
+.overview-table td {
+  padding: 16px 24px;
+}
+
+.overview-table th {
+  color: #728e86;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.overview-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.overview-project:hover {
+  background: #d8eadc;
+  border-color: #9cbfa9;
+}
+
+.project-icon {
+  border: 1px solid #b9d5c2;
+}
+
+@media (max-width: 575.98px) {
+  .setup-step {
+    flex-wrap: wrap;
+  }
+
+  .setup-step > .flex-grow-1 {
+    flex-basis: calc(100% - 40px);
+  }
+
+  .setup-step .overview-link {
+    margin-left: 34px;
+  }
+}

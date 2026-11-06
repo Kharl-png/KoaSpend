@@ -43,6 +43,11 @@
   color: #7b918d;
 }
 
+.topbar-search .form-control::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 .topbar-shortcut {
   padding: 3px 6px;
   border: 1px solid #dce7e1;

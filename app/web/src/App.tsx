@@ -4,6 +4,8 @@ import { navigation } from './components/Sidebar/navigation'
 import type { SidebarPage } from './components/Sidebar/navigation'
 import { mockSession } from './data/mockSession'
 import TopBar from './components/TopBar/TopBar'
+import OwnerOverview from './components/OwnerOverview/OwnerOverview'
+import { mockOwnerOverview } from './data/mockOwnerOverview'
 import './App.css'
 
 function getPageFromHash() {
@@ -56,14 +58,20 @@ function App() {
         />
         <main id="main" className="p-4 p-md-5">
           <div className="container-fluid p-0">
-            <h1 className="h3 fw-semibold">{page.label}</h1>
-            <p className="text-secondary">Your team workspace.</p>
-            {page.id === 'requests' && searchQuery !== null && (
-              <p className="text-secondary" role="status">
-                {searchQuery
-                  ? `No requests found for “${searchQuery}”.`
-                  : 'No requests yet.'}
-              </p>
+            {page.id === 'overview' && mockSession.user.role === 'owner' ? (
+              <OwnerOverview data={mockOwnerOverview} onNavigate={navigate} />
+            ) : (
+              <>
+                <h1 className="h3 fw-semibold">{page.label}</h1>
+                <p className="text-secondary">Your team workspace.</p>
+                {page.id === 'requests' && searchQuery !== null && (
+                  <p className="text-secondary" role="status">
+                    {searchQuery
+                      ? `No requests found for “${searchQuery}”.`
+                      : 'No requests yet.'}
+                  </p>
+                )}
+              </>
             )}
           </div>
         </main>
