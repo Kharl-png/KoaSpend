@@ -24,16 +24,20 @@ import type { ActivityKind } from './types/activity'
 import type { OwnerProjectsData } from './types/projects'
 import type { OwnerTeamData } from './types/team'
 import './App.css'
+import HowItWorks from './components/HowItWorks/HowItWorks'
 
 function getPageFromHash() {
   return (
     navigation.find(
-      (item) => item.id === window.location.hash.slice(1).split('?')[0],
+      (item) =>
+        item.id !== 'help' &&
+        item.id === window.location.hash.slice(1).split('?')[0],
     ) ?? navigation[0]
   )
 }
 
 function App() {
+  const [showHelp, setShowHelp] = useState(window.location.hash === '#help')
   const [connectionsData, setConnectionsData] = useState(mockConnections)
   const [activityEvents, setActivityEvents] = useState(mockActivity)
   const [policyData, setPolicyData] = useState(mockSpendingPolicy)
@@ -51,6 +55,10 @@ function App() {
 
   useEffect(() => {
     function syncPage() {
+      if (window.location.hash === '#help') {
+        setShowHelp(true)
+        return
+      }
       setPage(getPageFromHash())
       setRouteHash(window.location.hash)
     }
@@ -60,6 +68,10 @@ function App() {
   }, [])
 
   function navigate(id: SidebarPage) {
+    if (id === 'help') {
+      setShowHelp(true)
+      return
+    }
     window.location.hash = id
     setRouteHash(window.location.hash)
     setPage(navigation.find((item) => item.id === id) ?? navigation[0])
@@ -137,6 +149,21 @@ function App() {
 
   return (
     <div className="app-layout d-flex min-vh-100">
+      {showHelp && (
+        <HowItWorks
+          onClose={() => {
+            setShowHelp(false)
+            if (window.location.hash === '#help') {
+              window.history.replaceState(
+                null,
+                '',
+                `${window.location.pathname}${window.location.search}#overview`,
+              )
+              setRouteHash(window.location.hash)
+            }
+          }}
+        />
+      )}
       <Sidebar
         workspace={mockSession.workspace}
         user={mockSession.user}

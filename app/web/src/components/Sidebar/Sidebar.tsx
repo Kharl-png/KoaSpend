@@ -73,9 +73,7 @@ export default function Sidebar({
               height="34"
               alt=""
             />
-            <span>
-              KoaSpend
-            </span>
+            <span>KoaSpend</span>
           </a>
           <button
             className="btn sidebar-close d-lg-none p-1"
@@ -109,7 +107,8 @@ export default function Sidebar({
               href={`#${id}`}
               className={`nav-link d-flex align-items-center gap-3 ${activePage === id ? 'active' : ''} ${id === 'connections' ? 'sidebar-secondary-start' : ''}`}
               aria-current={activePage === id ? 'page' : undefined}
-              onClick={() => {
+              onClick={(event) => {
+                if (id === 'help') event.preventDefault()
                 onNavigate(id, label)
                 setMobileOpen(false)
               }}

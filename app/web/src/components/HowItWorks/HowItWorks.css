@@ -1,0 +1,61 @@
+.how-it-works {
+  --help-bg: #0c223a;
+  --help-fg: #edf4ff;
+  --help-accent: #e2edff;
+  --help-muted: color-mix(in srgb, var(--help-bg) 65%, var(--help-fg));
+  --help-border: color-mix(in srgb, var(--help-bg) 18%, var(--help-fg));
+  width: min(520px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  border: 1px solid var(--help-border);
+  background: var(--help-fg);
+  color: var(--help-bg);
+  font-size: 13px;
+}
+
+.how-it-works::backdrop {
+  background: color-mix(in srgb, var(--help-bg) 45%, transparent);
+  backdrop-filter: blur(4px);
+}
+
+.how-it-works-close {
+  color: var(--help-muted);
+}
+
+.how-it-works-close:hover {
+  color: var(--help-bg);
+}
+
+.how-it-works-close:focus-visible {
+  outline: 2px solid var(--help-muted);
+  outline-offset: 4px;
+}
+
+.how-it-works-step + .how-it-works-step {
+  margin-top: 22px;
+}
+
+.how-it-works-number {
+  width: 28px;
+  height: 28px;
+  background: var(--help-accent);
+  color: var(--help-bg);
+  font-size: 11px;
+}
+
+.how-it-works-step-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.how-it-works-muted {
+  color: var(--help-muted);
+  line-height: 1.7;
+}
+
+.how-it-works-note {
+  background: var(--help-accent);
+  border: 1px solid var(--help-border);
+  color: var(--help-muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
