@@ -1,0 +1,155 @@
+.workspace-assistant {
+  --assistant-bg: #0c223a;
+  --assistant-fg: #edf4ff;
+  --assistant-accent: #e2edff;
+  --assistant-muted: color-mix(
+    in srgb,
+    var(--assistant-bg) 65%,
+    var(--assistant-fg)
+  );
+  --assistant-border: color-mix(
+    in srgb,
+    var(--assistant-bg) 18%,
+    var(--assistant-fg)
+  );
+  --assistant-hover: color-mix(
+    in srgb,
+    var(--assistant-bg) 12%,
+    var(--assistant-accent)
+  );
+  color: var(--assistant-bg);
+  font-size: 14px;
+}
+
+.assistant-title {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+}
+
+.assistant-muted,
+.assistant-message-text {
+  color: var(--assistant-muted);
+}
+
+.assistant-panel {
+  border: 1px solid var(--assistant-border);
+  background: var(--assistant-fg);
+}
+
+.assistant-actions {
+  border-bottom: 1px solid var(--assistant-border);
+}
+
+.assistant-action {
+  color: var(--assistant-bg);
+  font-size: 12px;
+}
+
+.assistant-action:hover {
+  background: var(--assistant-hover);
+  color: var(--assistant-bg);
+}
+
+.assistant-avatar {
+  background: var(--assistant-accent);
+  color: var(--assistant-bg);
+}
+
+.assistant-conversation {
+  height: clamp(280px, 45dvh, 520px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.assistant-message + .assistant-message {
+  margin-top: 28px;
+}
+
+.assistant-avatar {
+  width: 32px;
+  height: 32px;
+  font-size: 11px;
+}
+
+.assistant-message-content {
+  min-width: 0;
+}
+
+.assistant-message-author {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.assistant-message-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+}
+
+.assistant-suggestion {
+  border: 1px solid var(--assistant-border);
+}
+
+.workspace-assistant .assistant-primary,
+.workspace-assistant .assistant-send {
+  background: var(--assistant-bg);
+  color: var(--assistant-fg);
+}
+
+.assistant-primary {
+  border-radius: 24px;
+  padding: 10px 16px;
+  font-size: 12px;
+}
+
+.assistant-primary:hover,
+.assistant-send:hover {
+  background: color-mix(
+    in srgb,
+    var(--assistant-bg) 80%,
+    var(--assistant-accent)
+  );
+}
+
+.assistant-composer {
+  border: 1px solid var(--assistant-border);
+}
+
+.assistant-composer .form-control {
+  background: transparent;
+  color: var(--assistant-bg);
+  font-size: 13px;
+  resize: vertical;
+  max-height: 180px;
+}
+
+.assistant-composer .form-control::placeholder {
+  color: var(--assistant-muted);
+}
+
+.assistant-composer .form-control:focus {
+  outline: none;
+}
+
+.assistant-composer:focus-within,
+.workspace-assistant button:focus-visible,
+.assistant-conversation:focus-visible {
+  outline: 2px solid var(--assistant-muted);
+  outline-offset: 3px;
+}
+
+.assistant-send {
+  width: 36px;
+  height: 36px;
+}
+
+@media (max-width: 575.98px) {
+  .assistant-conversation {
+    height: 340px;
+  }
+
+  .assistant-message {
+    gap: 10px !important;
+  }
+}
