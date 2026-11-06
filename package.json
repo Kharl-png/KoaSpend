@@ -1,0 +1,12 @@
+{
+  "name": "koaspend",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": ["app/*", "packages/*"],
+  "scripts": {
+    "dev": "npm run dev --workspace app/web",
+    "build": "npm run build --workspace app/web",
+    "lint": "npm run lint --workspace app/web",
+    "preview": "npm run preview --workspace app/web"
+  }
+}
