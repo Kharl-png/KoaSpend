@@ -1,81 +1,9 @@
 import { useState } from 'react'
-import {
-  Activity,
-  ChevronDown,
-  CircleHelp,
-  FileText,
-  Layers,
-  LayoutDashboard,
-  Menu,
-  MessageSquare,
-  Settings,
-  SlidersHorizontal,
-  Sparkles,
-  Users,
-  X,
-} from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { ChevronDown, Menu, X } from 'lucide-react'
+import { navigation } from './navigation'
+import type { SidebarPage } from './navigation'
 import type { User, Workspace } from '../../types/workspace'
 import './Sidebar.css'
-
-const navigation = [
-  {
-    id: 'overview',
-    label: 'Overview',
-    icon: LayoutDashboard,
-  },
-  {
-    id: 'requests',
-    label: 'Requests',
-    icon: FileText,
-  },
-  {
-    id: 'assistant',
-    label: 'Spend assistant',
-    icon: MessageSquare,
-  },
-  {
-    id: 'projects',
-    label: 'Projects',
-    icon: Layers,
-  },
-  {
-    id: 'team',
-    label: 'Team',
-    icon: Users,
-  },
-  {
-    id: 'policy',
-    label: 'Spending policy',
-    icon: SlidersHorizontal,
-  },
-  {
-    id: 'activity',
-    label: 'Activity',
-    icon: Activity,
-  },
-  {
-    id: 'notes',
-    label: 'Saved notes',
-    icon: Sparkles,
-  },
-  {
-    id: 'connections',
-    label: 'Connections',
-    icon: Settings,
-  },
-  {
-    id: 'help',
-    label: 'How it works',
-    icon: CircleHelp,
-  },
-] as const satisfies readonly {
-  id: string
-  label: string
-  icon: LucideIcon
-}[]
-
-export type SidebarPage = (typeof navigation)[number]['id']
 
 interface SidebarProps {
   activePage: SidebarPage
