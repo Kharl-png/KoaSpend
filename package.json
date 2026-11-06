@@ -7,6 +7,7 @@
     "dev": "npm run dev --workspace app/web",
     "build": "npm run build --workspace app/web",
     "lint": "npm run lint --workspace app/web",
+    "typecheck": "npm run typecheck --workspace app/web",
     "preview": "npm run preview --workspace app/web"
   }
 }
