@@ -3,6 +3,7 @@ import { ChevronDown, Menu, X } from 'lucide-react'
 import { navigation } from './navigation'
 import type { SidebarPage } from './navigation'
 import type { User, Workspace } from '../../types/workspace'
+import logo from '../../assets/logo.png'
 import './Sidebar.css'
 
 interface SidebarProps {
@@ -65,20 +66,13 @@ export default function Sidebar({
               setMobileOpen(false)
             }}
           >
-            <svg
+            <img
+              src={logo}
+              className="sidebar-brand-logo flex-shrink-0"
               width="34"
-              height="40"
-              viewBox="0 0 34 40"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M14 7 4 27M25 5 11 36M30 18 21 35"
-                stroke="currentColor"
-                strokeWidth="6"
-                strokeLinecap="round"
-              />
-            </svg>
+              height="34"
+              alt=""
+            />
             <span>
               KoaSpend
             </span>
@@ -99,7 +93,6 @@ export default function Sidebar({
             </span>
             <span className="flex-grow-1">
               <span className="d-block fw-semibold">{workspace.name}</span>
-              <small className="d-block mt-1">{workspace.environmentLabel}</small>
             </span>
             <ChevronDown size={17} className="flex-shrink-0" />
           </div>
