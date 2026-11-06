@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { MemberDashboard } from './member/MemberDashboard'
 import Sidebar from './components/Sidebar/Sidebar'
 import { navigation } from './components/Sidebar/navigation'
 import type { SidebarPage } from './components/Sidebar/navigation'
@@ -36,7 +37,7 @@ function getPageFromHash() {
   )
 }
 
-function App() {
+function OwnerWorkspace() {
   const [showHelp, setShowHelp] = useState(window.location.hash === '#help')
   const [connectionsData, setConnectionsData] = useState(mockConnections)
   const [activityEvents, setActivityEvents] = useState(mockActivity)
@@ -165,7 +166,6 @@ function App() {
         />
       )}
       <Sidebar
-        workspace={mockSession.workspace}
         user={mockSession.user}
         activePage={page.id}
         onNavigate={navigate}
@@ -173,13 +173,9 @@ function App() {
       <div className="workspace-content flex-grow-1">
         <TopBar
           pageTitle={page.label}
-          workspace={mockSession.workspace}
           onSearch={(query) => {
             setSearchQuery(query)
             navigate('requests')
-          }}
-          onConnectionStatus={() => {
-            navigate('connections')
           }}
         />
         <main id="main" className="p-4 p-md-5">
@@ -202,7 +198,6 @@ function App() {
                   ...mockOwnerRequests,
                   projects: projectsData.projects,
                 }}
-                user={mockSession.user}
                 searchQuery={searchQuery ?? ''}
               />
             ) : page.id === 'projects' && mockSession.user.role === 'owner' ? (
@@ -305,7 +300,7 @@ function App() {
       </div>
     </div>
   )
-import { MemberDashboard } from './member/MemberDashboard'
+}
 
 function App() {
   const [pathname, setPathname] = useState(window.location.pathname)
@@ -315,7 +310,7 @@ function App() {
     return () => window.removeEventListener('popstate', restore)
   }, [])
   if (/^\/member(?:\/|$)/.test(pathname)) return <MemberDashboard />
-  return <h1>KoaSpend</h1>
+  return <OwnerWorkspace />
 }
 
 export default App

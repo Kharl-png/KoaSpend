@@ -41,28 +41,9 @@
   margin-left: 3px;
   letter-spacing: 0;
 }
-.workspace-selector {
-  padding: 12px 10px;
-  gap: 10px;
-  min-height: 80px;
-  background: #173451;
-  border: 1px solid #355575;
-  border-radius: 12px;
-  color: #edf4ff;
-  font-size: 12px;
-}
 .account-button small {
   color: var(--sidebar-muted);
   font-size: 12px;
-}
-.workspace-avatar {
-  width: 32px;
-  height: 34px;
-  border-radius: 8px;
-  background: #dceaff;
-  color: #1b426d;
-  font-size: 18px;
-  font-weight: 600;
 }
 .sidebar-section-label {
   padding-left: 13px;
