@@ -1,5 +1,61 @@
 # Frontend data contracts
 
+## Owner Requests page
+
+The Requests page receives `OwnerRequestsData`, defined in
+[`requests.ts`](../app/web/src/types/requests.ts). Its mock contains five sample
+requests: two needing review, two completed, and one blocked. Project options
+reuse the overview mock projects. Set `requests` to `[]` to preview the empty state.
+
+| Field | Type | Purpose |
+| --- | --- | --- |
+| `currency` | string | Unit displayed after each amount |
+| `projects` | `{ id: string, name: string }[]` | Project filter options |
+| `requests` | `PurchaseRequest[]` | Full list used by client-side filters |
+| `requests[].id` | string | Stable unique request ID |
+| `requests[].title` | string | Purchase title |
+| `requests[].memberName` | string | Requesting team member |
+| `requests[].projectId` | string | Matches a project ID |
+| `requests[].amount` | number | Amount in `currency` |
+| `requests[].status` | `"needs_review"`, `"completed"`, `"blocked"` | Status filter and badge |
+
+All fields are required. `requests: []` displays “No matching requests”.
+Status, project, and search filters are combined. Search matches title, member,
+or project name, ignoring letter case. The Needs review badge counts all
+`needs_review` records before filters. Global search applies when submitted.
+The current overview model still uses `pending` for its review status; a future
+API adapter must map that value to `needs_review` for this page.
+
+```json
+{
+  "currency": "XLM",
+  "projects": [
+    {
+      "id": "sample-project",
+      "name": "Sample Project"
+    }
+  ],
+  "requests": [
+    {
+      "id": "request-1",
+      "title": "Design assets",
+      "memberName": "Maya Chen",
+      "projectId": "sample-project",
+      "amount": 20,
+      "status": "needs_review"
+    }
+  ]
+}
+```
+
+As in the reference owner view, New request opens an account/session dialog.
+This frontend preview has no authentication provider, sign-out action, request
+creation endpoint, or approval/payment mutations. Its dialog displays the mock
+user and can be dismissed with Close or Escape. Filter state resets when leaving
+the Requests page; the selected page itself persists via the URL hash.
+
+## Shared session and overview contracts
+
 These are the objects consumed by the current React + TypeScript frontend.
 They describe component input, not implemented HTTP endpoints. The app currently
 imports mock objects; no API response wrapper, authentication flow, or runtime
