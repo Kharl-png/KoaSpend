@@ -1,0 +1,11 @@
+.app-layout {
+  background: #f6f8f7;
+}
+.workspace-content {
+  min-width: 0;
+}
+@media (max-width: 991.98px) {
+  .workspace-content {
+    padding-top: 80px !important;
+  }
+}
