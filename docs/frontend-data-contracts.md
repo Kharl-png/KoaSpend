@@ -151,7 +151,7 @@ Allowed `page` values, defined in [navigation.ts](../app/web/src/components/Side
 
 ```text
 overview, requests, assistant, projects, team,
-policy, activity, notes, connections, help
+policy, activity, connections, help
 ```
 
 Only `complete` contributes to the completion count. Progress is
