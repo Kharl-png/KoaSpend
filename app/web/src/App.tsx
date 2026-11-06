@@ -8,6 +8,8 @@ import OwnerOverview from './components/OwnerOverview/OwnerOverview'
 import { mockOwnerOverview } from './data/mockOwnerOverview'
 import OwnerRequests from './components/OwnerRequests/OwnerRequests'
 import { mockOwnerRequests } from './data/mockOwnerRequests'
+import WorkspaceAssistant from './components/WorkspaceAssistant/WorkspaceAssistant'
+import { mockWorkspaceAssistant } from './data/mockWorkspaceAssistant'
 import './App.css'
 
 function getPageFromHash() {
@@ -67,6 +69,12 @@ function App() {
                 data={mockOwnerRequests}
                 user={mockSession.user}
                 searchQuery={searchQuery ?? ''}
+              />
+            ) : page.id === 'assistant' ? (
+              <WorkspaceAssistant
+                data={mockWorkspaceAssistant}
+                user={mockSession.user}
+                onNavigate={navigate}
               />
             ) : (
               <>
