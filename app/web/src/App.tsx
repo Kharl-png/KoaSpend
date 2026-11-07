@@ -352,5 +352,7 @@ function App() {
   if (/^\/owner(?:\/|$)/.test(pathname) || (pathname === '/' && window.location.hash && !window.location.hash.startsWith('#login'))) return <OwnerWorkspace />
   return <LoginWorkspace openDashboard={openDashboard} />
 }
+export default App
+
 
 export default App
