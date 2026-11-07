@@ -18,8 +18,8 @@ function FormField({ id, label, secret = false, error, autoComplete, type = 'tex
   </div>
 }
 
-export function AuthPage({ mode, onModeChange, onBack }: {
-  mode: AuthMode; onModeChange: (mode: AuthMode) => void; onBack: () => void
+export function AuthPage({ mode, onModeChange, onBack, onPreviewDashboard }: {
+  mode: AuthMode; onModeChange: (mode: AuthMode) => void; onBack: () => void; onPreviewDashboard?: () => void
 }) {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [notice, setNotice] = useState(false)
@@ -56,6 +56,7 @@ export function AuthPage({ mode, onModeChange, onBack }: {
         <FormField id={member ? 'access-code' : 'password'} label={member ? 'Access code' : 'Password'} secret autoComplete={member ? 'off' : signup ? 'new-password' : 'current-password'} error={errors[member ? 'access-code' : 'password']} />
         <button className="sign-in-button" type="submit"><LogIn size={13} aria-hidden="true" />{signup ? 'Create account' : 'Sign in'}</button>
         {notice && <p className="form-notice" role="status">{signup ? 'Account registration' : 'Authentication'} is not available yet.</p>}
+        {notice && !signup && onPreviewDashboard && <button className="sign-in-button" type="button" onClick={onPreviewDashboard}>Open {member ? 'Member' : 'Owner'} dashboard preview</button>}
       </form>
     </div>
   </div>

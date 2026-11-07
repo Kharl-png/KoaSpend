@@ -1,0 +1,111 @@
+.owner-requests {
+  --requests-bg: #0c223a;
+  --requests-fg: #edf4ff;
+  --requests-accent: #e2edff;
+  --requests-muted: color-mix(
+    in srgb,
+    var(--requests-bg) 65%,
+    var(--requests-fg)
+  );
+  --requests-border: color-mix(
+    in srgb,
+    var(--requests-bg) 18%,
+    var(--requests-fg)
+  );
+  --requests-hover: color-mix(
+    in srgb,
+    var(--requests-bg) 12%,
+    var(--requests-accent)
+  );
+  color: var(--requests-bg);
+  font-size: 14px;
+}
+
+.requests-title {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+}
+
+.requests-muted {
+  color: var(--requests-muted);
+}
+
+.requests-toolbar .nav-link {
+  padding: 10px 12px;
+  color: var(--requests-muted);
+  font-size: 12px;
+}
+
+.requests-toolbar .nav-link.active {
+  background: var(--requests-accent);
+  color: var(--requests-bg);
+  font-weight: 600;
+}
+
+.requests-toolbar .nav-link:hover {
+  background: var(--requests-hover);
+  color: var(--requests-bg);
+}
+
+.requests-count,
+.requests-status {
+  background: var(--requests-accent);
+  color: var(--requests-bg);
+  font-weight: 500;
+}
+
+.requests-project-filter {
+  width: auto;
+  min-width: 150px;
+  padding-block: 11px;
+  border-color: var(--requests-border);
+  background-color: transparent;
+  color: var(--requests-bg);
+  font-size: 12px;
+}
+
+.owner-requests button:focus-visible,
+.requests-project-filter:focus {
+  outline: 2px solid var(--requests-muted);
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+.requests-table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--requests-bg);
+  --bs-table-border-color: var(--requests-border);
+  border-top: 1px solid var(--requests-border);
+}
+
+.requests-table th {
+  color: var(--requests-muted);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.requests-table th,
+.requests-table td {
+  padding: 16px 8px;
+}
+
+.requests-table th:first-child {
+  width: 70%;
+}
+
+.requests-table .requests-empty {
+  padding: 44px 12px;
+  color: var(--requests-muted);
+  border-bottom: 0;
+}
+
+@media (max-width: 575.98px) {
+  .requests-project-filter {
+    width: 100%;
+  }
+
+  .requests-toolbar .nav {
+    width: 100%;
+  }
+}

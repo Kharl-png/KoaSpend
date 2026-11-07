@@ -1,4 +1,24 @@
 :root {
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
+  color: #173b36;
+  background: #f6f8f7;
+}
+body {
+  margin: 0;
+  font-family: inherit;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Authentication-only defaults from origin/login. */
+.auth-layout {
   font-family: Inter, 'Segoe UI', sans-serif;
   --color-bg: #0C223A;
   --color-fg: #EDF4FF;
@@ -12,7 +32,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
-* { box-sizing: border-box; }
-body { margin: 0; min-width: 320px; font-family: inherit; }
-button, input { font: inherit; }
-button:focus-visible, input:focus-visible { outline: 3px solid #94bcf4; outline-offset: 3px; }
+.auth-layout *, .auth-layout *::before, .auth-layout *::after { box-sizing: border-box; }
+.auth-layout button, .auth-layout input { font: inherit; }
+.auth-layout button:focus-visible, .auth-layout input:focus-visible { outline: 3px solid #94bcf4; outline-offset: 3px; }

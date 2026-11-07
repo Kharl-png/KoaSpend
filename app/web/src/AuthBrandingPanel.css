@@ -1,5 +1,5 @@
 ﻿/* One set of dimensions for every authentication view; based on Sign-member.png. */
-.brand-panel {
+.auth-layout .brand-panel {
   --brand-mascot-width: 250px;
   --brand-mascot-height: 300px;
   --brand-headline-size: 46px;
@@ -15,26 +15,26 @@
   color: var(--color-fg);
   background: linear-gradient(180deg, var(--color-bg) 25%, #245e9e 100%);
 }
-.brand-logo { display: flex; align-items: center; gap: 9px; margin-left: 10px; font-size: 22px; font-weight: 700; }
-.brand-logo img { display: block; width: 50px; height: 50px; object-fit: contain; }
-.brand-content { display: flex; align-items: center; width: 100%; max-width: 600px; margin: auto; border-bottom: 1px solid #91abc6; transform: translateY(-26px); }
-.brand-mascot { display: block; flex: 0 0 auto; width: var(--brand-mascot-width); max-width: 54%; height: var(--brand-mascot-height); margin: 0 0 -26px -24px; object-fit: contain; align-self: end; }
-.brand-content h1 { flex: 1; margin: 0 0 12px; font-size: var(--brand-headline-size); line-height: 1.18; letter-spacing: -.025em; font-weight: 750; }
-.headline-dot { color: #159bf0; }
+.auth-layout .brand-logo { display: flex; align-items: center; gap: 9px; margin-left: 10px; font-size: 22px; font-weight: 700; }
+.auth-layout .brand-logo img { display: block; width: 50px; height: 50px; object-fit: contain; }
+.auth-layout .brand-content { display: flex; align-items: center; width: 100%; max-width: 600px; margin: auto; border-bottom: 1px solid #91abc6; transform: translateY(-26px); }
+.auth-layout .brand-mascot { display: block; flex: 0 0 auto; width: var(--brand-mascot-width); max-width: 54%; height: var(--brand-mascot-height); margin: 0 0 -26px -24px; object-fit: contain; align-self: end; }
+.auth-layout .brand-content h1 { flex: 1; margin: 0 0 12px; font-size: var(--brand-headline-size); line-height: 1.18; letter-spacing: -.025em; font-weight: 750; }
+.auth-layout .headline-dot { color: #159bf0; }
 @media (min-width: 1000px) {
-  .brand-panel { --brand-mascot-width: 300px; --brand-mascot-height: 360px; --brand-headline-size: clamp(46px, 4.8vw, 56px); }
-  .brand-logo { font-size: 26px; }
-  .brand-logo img { width: 60px; height: 60px; }
+  .auth-layout .brand-panel { --brand-mascot-width: 300px; --brand-mascot-height: 360px; --brand-headline-size: clamp(46px, 4.8vw, 56px); }
+  .auth-layout .brand-logo { font-size: 26px; }
+  .auth-layout .brand-logo img { width: 60px; height: 60px; }
 }
 @media (max-width: 899.98px) {
-  .brand-panel { width: 100%; height: auto; min-height: 430px; padding: 24px 6%; --brand-headline-size: clamp(32px, 5vw, 48px); }
-  .brand-content { margin: 35px auto 0; transform: none; }
-  .brand-mascot { width: 40%; height: auto; max-height: 310px; margin-bottom: -20px; }
+  .auth-layout .brand-panel { width: 100%; height: auto; min-height: 430px; padding: 24px 6%; --brand-headline-size: clamp(32px, 5vw, 48px); }
+  .auth-layout .brand-content { margin: 35px auto 0; transform: none; }
+  .auth-layout .brand-mascot { width: 40%; height: auto; max-height: 310px; margin-bottom: -20px; }
 }
 @media (max-width: 575.98px) {
-  .brand-panel { min-height: 0; padding: 20px 24px 32px; --brand-headline-size: clamp(25px, 7vw, 36px); }
-  .brand-logo { font-size: 19px; }
-  .brand-logo img { width: 44px; height: 44px; }
-  .brand-content { margin-top: 32px; }
-  .brand-mascot { width: 43%; }
+  .auth-layout .brand-panel { min-height: 0; padding: 20px 24px 32px; --brand-headline-size: clamp(25px, 7vw, 36px); }
+  .auth-layout .brand-logo { font-size: 19px; }
+  .auth-layout .brand-logo img { width: 44px; height: 44px; }
+  .auth-layout .brand-content { margin-top: 32px; }
+  .auth-layout .brand-mascot { width: 43%; }
 }

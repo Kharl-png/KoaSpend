@@ -1,0 +1,144 @@
+.owner-projects {
+  --projects-bg: #0c223a;
+  --projects-fg: #edf4ff;
+  --projects-accent: #e2edff;
+  --projects-muted: color-mix(
+    in srgb,
+    var(--projects-bg) 65%,
+    var(--projects-fg)
+  );
+  --projects-border: color-mix(
+    in srgb,
+    var(--projects-bg) 18%,
+    var(--projects-fg)
+  );
+  --projects-hover: color-mix(
+    in srgb,
+    var(--projects-bg) 12%,
+    var(--projects-accent)
+  );
+  color: var(--projects-bg);
+  font-size: 14px;
+}
+
+.projects-title {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+}
+
+.projects-muted {
+  color: var(--projects-muted);
+}
+
+.owner-projects .projects-primary,
+.owner-projects .projects-outline {
+  padding: 11px 20px;
+  border-radius: 28px;
+  font-size: 13px;
+}
+
+.owner-projects .projects-primary {
+  background: var(--projects-bg);
+  color: var(--projects-fg);
+}
+
+.owner-projects .projects-primary:hover {
+  background: color-mix(
+    in srgb,
+    var(--projects-bg) 80%,
+    var(--projects-accent)
+  );
+}
+
+.owner-projects .projects-outline {
+  border: 1px solid var(--projects-border);
+  color: var(--projects-bg);
+}
+
+.projects-outline:hover,
+.project-card:hover {
+  background: var(--projects-hover);
+  color: var(--projects-bg);
+}
+
+.project-card {
+  border: 1px solid var(--projects-border);
+  border-radius: 15px;
+  background: var(--projects-accent);
+  color: var(--projects-bg);
+}
+
+.project-card-icon {
+  border: 1px solid var(--projects-border);
+}
+
+.project-description {
+  overflow-wrap: anywhere;
+}
+
+.projects-progress {
+  height: 4px;
+  background: var(--projects-border);
+}
+
+.projects-progress .progress-bar {
+  background: var(--projects-bg);
+}
+
+.projects-progress .has-budget {
+  min-width: 2px;
+}
+
+.project-task {
+  border-top: 1px solid var(--projects-border);
+  overflow-wrap: anywhere;
+}
+
+.project-member-avatar {
+  width: 32px;
+  height: 32px;
+  background: var(--projects-accent);
+  color: var(--projects-bg);
+  font-size: 11px;
+}
+
+.owner-projects button:focus-visible,
+.projects-dialog .form-control:focus,
+.projects-dialog .form-select:focus {
+  outline: 2px solid var(--projects-muted);
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+.projects-dialog {
+  width: min(520px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  border: 1px solid var(--projects-border);
+  border-radius: 16px;
+  background: var(--projects-fg);
+  color: var(--projects-bg);
+}
+
+.projects-dialog::backdrop {
+  background: color-mix(in srgb, var(--projects-bg) 50%, transparent);
+}
+
+.projects-dialog .form-control,
+.projects-dialog .form-select,
+.projects-dialog .input-group-text {
+  border-color: var(--projects-border);
+  background-color: var(--projects-fg);
+  color: var(--projects-bg);
+  font-size: 14px;
+}
+
+.projects-close {
+  color: var(--projects-bg);
+}
+
+.projects-form-error {
+  color: var(--projects-bg);
+  border-left: 3px solid var(--projects-bg);
+  padding-left: 10px;
+}
