@@ -1,0 +1,36 @@
+﻿/* Reuse the owner assistant's chat styles, with tokens scoped to the member page. */
+.member-dashboard.page-assistant .main-content { padding: 24px; }
+@media(min-width:768px) {
+  .member-dashboard.page-assistant .main-content { padding: 48px; }
+}
+.member-dashboard .purchase-assistant {
+  --assistant-bg: var(--ks-navy);
+  --assistant-fg: var(--ks-surface);
+  --assistant-accent: var(--ks-accent);
+  --assistant-muted: var(--ks-muted);
+  --assistant-border: var(--ks-border);
+  --assistant-hover: var(--ks-hover);
+  width: 100%;
+  min-width: 0;
+}
+.member-dashboard .purchase-assistant .page-heading { margin-bottom: 24px; }
+.member-dashboard .purchase-assistant .assistant-panel { display: flex; flex-direction: column; width: 100%; }
+.member-dashboard .purchase-assistant .assistant-conversation { flex: 1 1 auto; min-width: 0; }
+.member-dashboard .purchase-assistant .assistant-message-author { font-size: 12px; font-weight: 600; letter-spacing: normal; }
+.member-dashboard .purchase-assistant .assistant-message-text { font-size: 14px; }
+.member-dashboard .purchase-assistant .assistant-avatar { font-size: 11px; }
+.member-dashboard .purchase-assistant .prompt-options { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; padding: 0 24px 16px; }
+.member-dashboard .purchase-assistant .prompt-options button { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-width: 0; padding: 10px 12px; border: 1px solid var(--assistant-border); border-radius: var(--ks-control-radius); background: transparent; color: var(--assistant-bg); text-align: left; font-size: 12px; overflow-wrap: anywhere; }
+.member-dashboard .purchase-assistant .prompt-options button:hover { background: var(--assistant-hover); }
+.member-dashboard .purchase-composer-container { padding: 0 24px 16px; margin-top: auto; }
+.member-dashboard .purchase-assistant .assistant-composer .form-control { width: 100%; min-width: 0; }
+.member-dashboard .purchase-assistant .assistant-send { background: var(--assistant-bg); color: var(--assistant-fg); border: 0; }
+.member-dashboard .purchase-assistant .assistant-send:hover:not(:disabled) { background: var(--ks-strong); }
+.member-dashboard .purchase-assistant .assistant-notice { margin-top: 12px; color: var(--assistant-muted); font-size: 12px; }
+@media(max-width:991.98px) {
+  .member-dashboard .purchase-assistant .prompt-options { grid-template-columns: 1fr; }
+}
+@media(max-width:575.98px) {
+  .member-dashboard .purchase-assistant .prompt-options { padding-inline: 16px; }
+  .member-dashboard .purchase-composer-container { padding-inline: 16px; }
+}

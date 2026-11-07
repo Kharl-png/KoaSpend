@@ -16,3 +16,22 @@ button,
 a {
   -webkit-tap-highlight-color: transparent;
 }
+
+/* Authentication-only defaults from origin/login. */
+.auth-layout {
+  font-family: Inter, 'Segoe UI', sans-serif;
+  --color-bg: #0C223A;
+  --color-fg: #EDF4FF;
+  --color-accent: #E2EDFF;
+  --color-surface: #163452;
+  --color-muted: #bfd1e9;
+  --color-border: #829bbd;
+  color: var(--color-fg);
+  background: var(--color-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+.auth-layout *, .auth-layout *::before, .auth-layout *::after { box-sizing: border-box; }
+.auth-layout button, .auth-layout input { font: inherit; }
+.auth-layout button:focus-visible, .auth-layout input:focus-visible { outline: 3px solid #94bcf4; outline-offset: 3px; }

@@ -4,3 +4,77 @@
 .workspace-content {
   min-width: 0;
 }
+
+/* Login styles are isolated from both dashboard layouts. */
+.auth-layout { min-height: 100vh; min-height: 100dvh; }
+.auth-layout .entry-panel { display: flex; align-items: center; justify-content: center; padding: 40px 24px; background: #fff; }
+.auth-layout .entry-content { width: 100%; max-width: 335px; padding: 38px 28px; border-radius: 14px; color: var(--color-fg); background: var(--color-bg); box-shadow: 0 3px 7px #0c223a40; }
+.auth-layout .account-selection { min-height: 340px; transform: translateY(-16px); }
+.auth-layout .account-selection h2, .auth-layout .account-selection > .entry-description { margin-left: 7px; }
+.auth-layout .entry-content h2 { margin: 0; color: var(--color-fg); font-size: 28px; line-height: 1.2; font-weight: 750; letter-spacing: -.025em; }
+.auth-layout .entry-description { margin: 0 0 23px; color: var(--color-fg); font-size: 11px; line-height: 1.5; }
+.auth-layout .role-list { display: grid; gap: 22px; }
+.auth-layout .role-card { display: flex; align-items: center; width: calc(100% + 10px); margin-left: -5px; min-height: 73px; gap: 7px; padding: 14px; text-align: left; color: var(--color-bg); background: #fff; border: 1px solid #d4dfed; border-radius: 14px; transition: background .2s, transform .2s; }
+.auth-layout .role-card:hover { background: var(--color-accent); transform: translateY(-2px); }
+.auth-layout .role-icon { display: grid; flex: 0 0 38px; height: 38px; place-items: center; border-radius: 6px; background: #cbe4ff; }
+.auth-layout .role-copy { display: flex; flex: 1; flex-direction: column; min-width: 0; }
+.auth-layout .role-title { font-size: 11px; font-weight: 700; }
+.auth-layout .role-description { color: #526477; font-size: 9px; line-height: 1.4; }
+.auth-layout .role-chevron { flex: 0 0 auto; }
+.auth-layout .entry-icon { margin-bottom: 18px; }
+.auth-layout .section-label { margin: 0 0 8px; color: var(--color-accent); font-size: 10px; font-weight: 700; letter-spacing: .16em; }
+.auth-layout .back-button { display: inline-flex; align-items: center; gap: 8px; padding: 0; margin: 0 0 28px; border: 0; color: var(--color-accent); background: transparent; font-size: 13px; font-weight: 600; }
+.auth-layout .back-button:hover { text-decoration: underline; }
+.auth-layout .login-form { display: grid; gap: 20px; }
+.auth-layout .field-group label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 650; }
+.auth-layout .field-group .form-control { min-height: 52px; padding: 12px 15px; border: 1px solid #829bbd; border-radius: 10px; color: var(--color-bg); background: #fff; font-size: 14px; }
+.auth-layout .field-group .form-control:focus { border-color: #345b88; box-shadow: 0 0 0 3px #b6cdea; }
+.auth-layout .field-group .form-control[aria-invalid="true"] { border-color: #df7878; }
+.auth-layout .field-group .form-control::placeholder { color: #596f89; }
+.auth-layout .password-field { position: relative; }
+.auth-layout .password-field .form-control { padding-right: 52px; }
+.auth-layout .password-toggle { position: absolute; top: 0; right: 0; display: grid; width: 50px; height: 100%; place-items: center; border: 0; color: #345b88; background: transparent; }
+.auth-layout .field-error { margin: 6px 0 0; color: #ffc4c4; font-size: 12px; }
+.auth-layout .sign-in-button { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; border: 0; border-radius: 10px; background: var(--color-accent); color: var(--color-bg); font-size: 14px; font-weight: 700; }
+.auth-layout .sign-in-button:hover { background: #cbe4ff; }
+.auth-layout .form-notice { margin: 0; color: var(--color-accent); font-size: 13px; }
+@media (min-width: 900px) {
+  .auth-layout .entry-panel { width: 46%; }
+}
+@media (max-width: 899.98px) {
+  .auth-layout .entry-panel { padding: 60px 24px; }
+  .auth-layout .account-selection { transform: none; }
+}
+@media (max-width: 575.98px) {
+  .auth-layout .entry-panel { padding: 38px 20px; }
+  .auth-layout .entry-content { padding: 32px 24px 40px; }
+  .auth-layout .entry-content h2 { font-size: 26px; }
+}
+@media (prefers-reduced-motion: reduce) { .auth-layout .role-card { transition: none; } }
+
+/* Authentication references share a navy shell and a compact white form. */
+.auth-layout .auth-content { max-width: 405px; min-height: 416px; padding: 24px 38px 40px; transform: translateY(-10px); }
+.auth-layout .auth-content .back-button { margin: 0 0 18px; gap: 8px; font-size: 10px; font-weight: 500; }
+.auth-layout .auth-content h2 { white-space: nowrap; font-size: clamp(20px, 2.3vw, 27px); letter-spacing: -.025em; }
+.auth-layout .auth-form-card { width: 100%; max-width: 278px; margin: 20px auto 0; padding: 21px 20px 14px; border: 1px solid #d9dfe5; border-radius: 16px; background: #fff; color: var(--color-bg); box-shadow: 0 2px 3px #0002; }
+.auth-layout .auth-switch { display: flex; gap: 8px; margin: 0 10px 10px; }
+.auth-layout .auth-switch button { flex: 1; min-height: 28px; padding: 4px 8px; border: 1px solid #4276ad; border-radius: 20px; background: #fff; color: var(--color-bg); font-size: 10px; }
+.auth-layout .auth-switch button[aria-current="page"] { background: var(--color-bg); color: #fff; }
+.auth-layout .auth-description { margin: 0 0 8px; color: #666; font-size: 9px; line-height: 1.35; }
+.auth-layout .auth-content .login-form { gap: 4px; }
+.auth-layout .auth-content .field-group label { margin-bottom: 3px; color: #535353; font-size: 9px; line-height: 1.2; font-weight: 400; }
+.auth-layout .auth-content .form-control { min-height: 30px; height: 30px; padding: 4px 8px; border-color: #d8d8d8; border-radius: 3px; font-size: 12px; }
+.auth-layout .auth-content .password-field .form-control { padding-right: 34px; }
+.auth-layout .auth-content .password-toggle { width: 32px; }
+.auth-layout .auth-content .sign-in-button { min-height: 27px; margin: 13px 9px 0; gap: 4px; background: var(--color-bg); color: #fff; border-radius: 20px; font-size: 10px; font-weight: 500; }
+.auth-layout .auth-content .sign-in-button:hover { background: #245e9e; }
+.auth-layout .auth-content .field-error { color: #a42626; font-size: 10px; }
+.auth-layout .auth-content .form-notice { color: #405b7a; font-size: 11px; }
+.auth-layout .member-content { padding-bottom: 55px; }
+.auth-layout .member-content .auth-form-card { margin-top: 28px; padding: 28px 25px 38px; }
+.auth-layout .member-content .auth-description { text-align: center; margin-bottom: 14px; }
+.auth-layout .member-content .sign-in-button { margin: 16px 5px 0; }
+@media (min-width: 900px) { .auth-layout .auth-content { width: min(405px, 36vw); padding-left: clamp(24px, 3.3vw, 38px); padding-right: clamp(24px, 3.3vw, 38px); } }
+
+@media (max-width: 899.98px) { .auth-layout .auth-content { transform: none; } .auth-layout .auth-content h2 { font-size: 25px; white-space: normal; } }
+@media (max-width: 575.98px) { .auth-layout .auth-content { padding: 24px 22px 32px; } .auth-layout .auth-content h2 { font-size: 23px; } .auth-layout .auth-form-card { padding: 20px 16px; } .auth-layout .auth-content .form-control { min-height: 40px; } .auth-layout .auth-content .sign-in-button, .auth-layout .auth-switch button { min-height: 40px; } .auth-layout .auth-content .field-group label, .auth-layout .auth-description { font-size: 12px; } }

@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react'
+import { ChevronRight, UserRound, UsersRound } from 'lucide-react'
+import { AuthPage } from './AuthPage'
+import { AuthBrandingPanel } from './AuthBrandingPanel'
 import { MemberDashboard } from './member/MemberDashboard'
 import Sidebar from './components/Sidebar/Sidebar'
 import { navigation } from './components/Sidebar/navigation'
@@ -302,15 +305,52 @@ function OwnerWorkspace() {
   )
 }
 
+type Role = 'Business Owner' | 'Team Member'
+const roles = [
+  { title: 'Business Owner', description: 'Create a workspace and manage your team', icon: UsersRound },
+  { title: 'Team Member', description: 'Sign in with your registered credentials', icon: UserRound },
+] as const
+
+function RoleSelection({ onSelect }: { onSelect: (role: Role) => void }) {
+  return <div className="entry-content account-selection">
+    <h2>Select account</h2>
+    <p className="entry-description">Select a profile to continue</p>
+    <div className="role-list">{roles.map(({ title, description, icon: Icon }) => <button className="role-card" type="button" key={title} onClick={() => onSelect(title)}>
+      <span className="role-icon"><Icon size={23} strokeWidth={1.7} aria-hidden="true" /></span>
+      <span className="role-copy"><span className="role-title">{title}</span><span className="role-description">{description}</span></span>
+      <ChevronRight className="role-chevron" size={20} aria-hidden="true" />
+    </button>)}</div>
+  </div>
+}
+
+type LoginPage = 'roles' | 'owner-signin' | 'owner-signup' | 'member-signin'
+
+function LoginWorkspace({ openDashboard }: { openDashboard: (role: 'owner' | 'member') => void }) {
+  const [page, setPage] = useState<LoginPage>('roles')
+  return <main className="container-fluid p-0"><div className="row g-0 auth-layout"><AuthBrandingPanel /><section className="entry-panel col-12 col-lg-6" aria-label={page === 'roles' ? 'Choose your role' : page === 'owner-signup' ? 'Create account' : 'Sign in'}>{page === 'roles' ? <RoleSelection onSelect={role => setPage(role === 'Business Owner' ? 'owner-signin' : 'member-signin')} /> : <AuthPage key={page} mode={page} onModeChange={setPage} onBack={() => setPage('roles')} onPreviewDashboard={() => openDashboard(page === 'member-signin' ? 'member' : 'owner')} />}</section></div></main>
+}
+
 function App() {
-  const [pathname, setPathname] = useState(window.location.pathname)
+  const [route, setRoute] = useState(() => window.location.pathname + window.location.hash)
   useEffect(() => {
-    const restore = () => setPathname(window.location.pathname)
+    const restore = () => setRoute(window.location.pathname + window.location.hash)
     window.addEventListener('popstate', restore)
-    return () => window.removeEventListener('popstate', restore)
+    window.addEventListener('hashchange', restore)
+    return () => {
+      window.removeEventListener('popstate', restore)
+      window.removeEventListener('hashchange', restore)
+    }
   }, [])
+  function openDashboard(role: 'owner' | 'member') {
+    const destination = role === 'owner' ? '/owner#overview' : '/member'
+    window.history.pushState(null, '', destination)
+    setRoute(window.location.pathname + window.location.hash)
+  }
+  const pathname = route.split('#')[0]
   if (/^\/member(?:\/|$)/.test(pathname)) return <MemberDashboard />
-  return <OwnerWorkspace />
+  // Keep existing owner hash links reachable as well as the explicit owner path.
+  if (/^\/owner(?:\/|$)/.test(pathname) || (pathname === '/' && window.location.hash && !window.location.hash.startsWith('#login'))) return <OwnerWorkspace />
+  return <LoginWorkspace openDashboard={openDashboard} />
 }
 
 export default App

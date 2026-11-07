@@ -11,36 +11,36 @@
   color: var(--topbar-bg);
 }
 
-.topbar {
+.workspace-header .topbar {
   min-height: 80px;
   padding: 20px 36px;
   background: var(--topbar-fg);
   font-size: 13px;
 }
 
-.topbar-muted {
+.workspace-header .topbar-muted {
   color: var(--topbar-muted);
 }
 
-.topbar-search {
+.workspace-header .topbar-search {
   color: var(--topbar-muted);
   border-radius: 6px;
 }
 
-.topbar-search-field {
+.workspace-header .topbar-search-field {
   border-radius: 6px;
 }
 
-.topbar-search-field:focus-within {
+.workspace-header .topbar-search-field:focus-within {
   outline: 2px solid var(--topbar-ring);
   outline-offset: 5px;
 }
 
-.topbar-search .form-control:focus {
+.workspace-header .topbar-search .form-control:focus {
   outline: none;
 }
 
-.topbar-search .form-control {
+.workspace-header .topbar-search .form-control {
   width: clamp(180px, 22vw, 340px);
   padding: 4px 6px;
   background: transparent;
@@ -48,16 +48,16 @@
   font-size: 12px;
 }
 
-.topbar-search .form-control::placeholder {
+.workspace-header .topbar-search .form-control::placeholder {
   color: var(--topbar-muted);
 }
 
-.topbar-search .form-control::-webkit-search-cancel-button {
+.workspace-header .topbar-search .form-control::-webkit-search-cancel-button {
   -webkit-appearance: none;
   appearance: none;
 }
 
-.topbar-shortcut {
+.workspace-header .topbar-shortcut {
   padding: 3px 6px;
   border: 1px solid var(--topbar-border);
   border-radius: 4px;
@@ -68,18 +68,18 @@
 }
 
 @media (max-width: 991.98px) {
-  .topbar {
+  .workspace-header .topbar {
     padding-left: 68px;
     padding-right: 20px;
   }
 }
 
 @media (max-width: 767.98px) {
-  .topbar {
+  .workspace-header .topbar {
     padding: 16px 20px 20px;
   }
 
-  .topbar > nav {
+  .workspace-header .topbar > nav {
     display: flex;
     align-items: center;
     width: 100%;
@@ -87,28 +87,28 @@
     padding-left: 48px;
   }
 
-  .topbar-tools {
+  .workspace-header .topbar-tools {
     width: 100%;
     min-width: 0;
   }
 
-  .topbar-search {
+  .workspace-header .topbar-search {
     flex: 1;
     width: 100%;
     min-width: 0;
   }
 
-  .topbar-search .form-control {
+  .workspace-header .topbar-search .form-control {
     width: 100%;
     min-width: 0;
   }
 
-  .topbar-search-field {
+  .workspace-header .topbar-search-field {
     flex: 1;
     min-width: 0;
   }
 
-  .topbar-shortcut {
+  .workspace-header .topbar-shortcut {
     display: none;
   }
 }
